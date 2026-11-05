@@ -1,37 +1,75 @@
 <!DOCTYPE html>
-<html lang="es" class="dark">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dragon Ball Universe - Character Codex</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
+    <title>Centro de Formación Somorrostro | La Cantera Tecnológica · Tu futuro empieza aquí</title>
+    <meta name="description" content="Centro de Formación Somorrostro (San Juan 10, Muskiz). Campus tecnológico de más de 75.000 m² con metodología por retos ETHAZI. Especialidades en SMR, ASIR, DAW y DAM.">
+    
+    <!-- Favicon inspirado en el escudo/isotipo tecnológico de Somorrostro -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230b101b'/><circle cx='50' cy='50' r='38' stroke='%230084ff' stroke-width='6' stroke-dasharray='10 6' fill='none'/><path d='M30 70L50 28L70 70M38 54H62' stroke='%23ffffff' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/><circle cx='50' cy='28' r='7' fill='%23ff7700'/></svg>">
+
+    <!-- Google Fonts: Plus Jakarta Sans, Outfit & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome 6 Pro CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        db: {
-                            orange: '#ff6600',
-                            yellow: '#ffcc00',
-                            gold: '#ffd700',
-                            blue: '#0044ff',
-                            darkBlue: '#0b1120',
-                            cardBg: '#151d30',
-                            accent: '#ff8800'
+                        darkBg: '#0b101b',
+                        darkSurface: '#0e1524',
+                        darkCard: '#131b2e',
+                        darkElevated: '#1a243c',
+                        borderMuted: 'rgba(255, 255, 255, 0.08)',
+                        brandBlue: {
+                            DEFAULT: '#0084ff',
+                            hover: '#006ed6',
+                            glow: 'rgba(0, 132, 255, 0.45)',
+                            light: '#38bdf8',
+                            dark: '#005bb5',
+                            soft: 'rgba(0, 132, 255, 0.12)'
+                        },
+                        brandOrange: {
+                            DEFAULT: '#ff7700',
+                            hover: '#e06800',
+                            glow: 'rgba(255, 119, 0, 0.45)',
+                            light: '#ffa040',
+                            accent: '#ff5500',
+                            soft: 'rgba(255, 119, 0, 0.12)'
                         }
                     },
                     fontFamily: {
-                        heading: ['Orbitron', 'sans-serif'],
-                        body: ['Rajdhani', 'sans-serif']
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
+                    },
+                    boxShadow: {
+                        'neon-blue': '0 0 25px -4px rgba(0, 132, 255, 0.55)',
+                        'neon-orange': '0 0 25px -4px rgba(255, 119, 0, 0.55)',
+                        'glass-card': '0 12px 35px -10px rgba(0, 0, 0, 0.8), 0 0 1px 1px rgba(255, 255, 255, 0.08)'
+                    },
+                    keyframes: {
+                        floatSlow: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-8px)' }
+                        },
+                        pulseSubtle: {
+                            '0%, 100%': { opacity: '0.45' },
+                            '50%': { opacity: '0.9' }
+                        }
+                    },
+                    animation: {
+                        floatSlow: 'floatSlow 4.5s ease-in-out infinite',
+                        pulseSubtle: 'pulseSubtle 3.5s ease-in-out infinite'
                     }
                 }
             }
@@ -40,25 +78,52 @@
 
     <style>
         body {
-            background-color: #070a13;
+            background-color: #0b101b;
             color: #e2e8f0;
-            font-family: 'Rajdhani', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
         }
 
-        /* Energy Aura Glow Effect */
-        .aura-glow {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .aura-glow:hover {
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 0 25px rgba(255, 102, 0, 0.6), 0 0 45px rgba(255, 204, 0, 0.3);
-            border-color: #ff6600;
+        ::selection {
+            background: #ff7700;
+            color: #ffffff;
         }
 
-        /* Saiyan Gold Glow Effect */
-        .gold-glow:hover {
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.7), 0 0 50px rgba(255, 136, 0, 0.4);
+        /* Ambient Glow & Grid background styling */
+        .ambient-glow-blue {
+            background: radial-gradient(circle, rgba(0, 132, 255, 0.22) 0%, rgba(11, 16, 27, 0) 70%);
+        }
+
+        .ambient-glow-orange {
+            background: radial-gradient(circle, rgba(255, 119, 0, 0.18) 0%, rgba(11, 16, 27, 0) 70%);
+        }
+
+        .somorrostro-grid {
+            background-size: 44px 44px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+        }
+
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(19, 27, 46, 0.72);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+        }
+
+        .glass-card-interactive {
+            background: rgba(19, 27, 46, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card-interactive:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0, 132, 255, 0.45);
+            box-shadow: 0 22px 40px -12px rgba(0, 132, 255, 0.18), 0 0 1px 1px rgba(0, 132, 255, 0.35);
         }
 
         /* Custom Scrollbar */
@@ -66,629 +131,1634 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #0b1120;
+            background: #0b101b;
         }
         ::-webkit-scrollbar-thumb {
-            background: #ff6600;
+            background: #1c2740;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #ffcc00;
-        }
-
-        /* Dragon Ball Radar Pulse */
-        @keyframes pulse-ring {
-            0% { transform: scale(0.95); opacity: 0.8; }
-            50% { transform: scale(1.05); opacity: 0.4; }
-            100% { transform: scale(0.95); opacity: 0.8; }
-        }
-        .radar-pulse {
-            animation: pulse-ring 2.5s infinite ease-in-out;
-        }
-
-        /* Modal backdrop blur */
-        .backdrop-blur-md {
-            backdrop-filter: blur(12px);
+            background: #0084ff;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-db-orange selection:text-white">
+<body class="bg-darkBg text-slate-100 antialiased selection:bg-brandOrange selection:text-white">
 
-    <!-- HERO / HEADER SECTION -->
-    <header class="relative bg-gradient-to-b from-db-darkBlue via-slate-900 to-[#070a13] border-b border-db-orange/30 pb-8 pt-6 px-4 sm:px-8 overflow-hidden">
-        <!-- Decorative Background Energy Orbs -->
-        <div class="absolute -top-24 -left-24 w-96 h-96 bg-db-orange/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute -top-20 -right-20 w-96 h-96 bg-db-yellow/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div class="max-w-7xl mx-auto">
-            <!-- Top Nav Logo & Stats -->
-            <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
-                <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-db-orange to-db-yellow p-1 shadow-lg shadow-db-orange/40 flex items-center justify-center radar-pulse">
-                        <i class="fa-solid font-bold text-2xl text-slate-950 fa-dragon"></i>
-                    </div>
-                    <div>
-                        <h1 class="font-heading text-2xl sm:text-4xl font-extrabold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-db-yellow via-db-orange to-amber-500">
-                            DRAGON BALL
-                        </h1>
-                        <p class="text-xs uppercase tracking-widest text-orange-400 font-semibold">Universe Codex & API Explorer</p>
-                    </div>
-                </div>
-
-                <!-- Global Stats Counter Badge -->
-                <div class="flex items-center gap-4 bg-slate-900/80 border border-slate-700/60 rounded-full px-5 py-2 backdrop-blur-md">
-                    <div class="text-center">
-                        <span class="block text-xs text-slate-400 font-medium uppercase">Personajes</span>
-                        <span id="total-count-badge" class="font-heading text-lg font-bold text-db-yellow">--</span>
-                    </div>
-                    <div class="w-px h-8 bg-slate-700"></div>
-                    <div class="text-center">
-                        <span class="block text-xs text-slate-400 font-medium uppercase">Páginas</span>
-                        <span id="total-pages-badge" class="font-heading text-lg font-bold text-db-orange">--</span>
-                    </div>
-                </div>
+    <!-- TOP INSTITUTIONAL BAR (Inspirado en somorrostro.com con sus marcas clave: HETEL, EBI, FP Euskadi) -->
+    <div class="bg-[#070b13] border-b border-white/10 text-xs py-2 px-4 font-medium text-slate-400">
+        <div class="max-w-7xl mx-auto flex items-center justify-between flex-wrap gap-3">
+            <!-- Left Badges -->
+            <div class="flex items-center gap-3 sm:gap-4 flex-wrap">
+                <span class="flex items-center gap-1.5 text-slate-300">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <strong class="text-white">Campus Somorrostro</strong> (+75.000 m² en Muskiz)
+                </span>
+                <span class="hidden md:inline text-slate-600">&bull;</span>
+                <span class="hidden md:inline text-slate-300">
+                    Red <strong>HETEL</strong> &bull; <strong>EBI</strong> Elizbarrutiko Ikastetxeak
+                </span>
+                <span class="hidden lg:inline text-slate-600">&bull;</span>
+                <span class="hidden lg:inline text-brandOrange font-semibold">
+                    <i class="fa-solid fa-award mr-1"></i> FP Euskadi · Modelo de Alto Rendimiento
+                </span>
             </div>
 
-            <!-- Search and Filter Bar -->
-            <div class="bg-slate-900/90 border border-db-orange/40 rounded-2xl p-4 sm:p-6 shadow-xl shadow-black/50 backdrop-blur-md">
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
-                    
-                    <!-- Search Input -->
-                    <div class="md:col-span-5 relative">
-                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                        <input type="text" id="search-input" placeholder="Buscar personaje (ej. Goku, Vegeta)..."
-                            class="w-full bg-slate-950 border border-slate-700 rounded-xl pl-11 pr-4 py-3 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-db-orange focus:ring-2 focus:ring-db-orange/40 transition">
-                    </div>
-
-                    <!-- Filter Race -->
-                    <div class="md:col-span-3 relative">
-                        <select id="race-filter" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-db-orange focus:ring-2 focus:ring-db-orange/40 appearance-none transition cursor-pointer">
-                            <option value="">Todas las Razas</option>
-                            <option value="Saiyan">Saiyan</option>
-                            <option value="Namekian">Namekian</option>
-                            <option value="Human">Humano</option>
-                            <option value="Frieza Race">Raza de Freezer</option>
-                            <option value="Android">Androide</option>
-                            <option value="God">Dios / Ángel</option>
-                            <option value="Majin">Majin</option>
-                        </select>
-                        <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"></i>
-                    </div>
-
-                    <!-- Filter Affiliation -->
-                    <div class="md:col-span-3 relative">
-                        <select id="affiliation-filter" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-db-orange focus:ring-2 focus:ring-db-orange/40 appearance-none transition cursor-pointer">
-                            <option value="">Todas las Afiliaciones</option>
-                            <option value="Z Fighter">Guerreros Z</option>
-                            <option value="Army of Frieza">Ejército de Freezer</option>
-                            <option value="Freelancer">Freelancer / Antagonista</option>
-                            <option value="Pride Troopers">Tropas del Orgullo</option>
-                            <option value="Assistant of Vermoud">Ángeles / Asistentes</option>
-                        </select>
-                        <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"></i>
-                    </div>
-
-                    <!-- Reset Filters Button -->
-                    <div class="md:col-span-1 flex justify-center">
-                        <button id="reset-btn" title="Limpiar Filtros" class="w-full h-11 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-xl flex items-center justify-center border border-slate-700 transition">
-                            <i class="fa-solid fa-arrows-rotate"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- MAIN CONTENT AREA -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-8 py-8 flex-grow w-full">
-        
-        <!-- Status / Error Banner -->
-        <div id="status-banner" class="hidden mb-6 p-4 rounded-xl border flex items-center gap-3">
-            <i id="status-icon" class="text-xl"></i>
-            <span id="status-message" class="text-sm font-medium"></span>
-        </div>
-
-        <!-- Loading Spinner -->
-        <div id="loading-spinner" class="py-24 flex flex-col items-center justify-center gap-4">
-            <div class="w-16 h-16 border-4 border-slate-800 border-t-db-orange rounded-full animate-spin"></div>
-            <p class="text-slate-400 text-sm tracking-wider font-semibold animate-pulse">CARGANDO PODER DE PELEA...</p>
-        </div>
-
-        <!-- Cards Grid -->
-        <div id="character-grid" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            <!-- Cards will be dynamically generated here -->
-        </div>
-
-        <!-- Empty State -->
-        <div id="empty-state" class="hidden py-20 text-center">
-            <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-500 text-3xl">
-                <i class="fa-solid fa-dragon"></i>
-            </div>
-            <h3 class="font-heading text-xl font-bold text-slate-200 mb-1">No se encontraron guerreros</h3>
-            <p class="text-slate-400 text-sm max-w-md mx-auto">No hay personajes que coincidan con la búsqueda o filtros aplicados. Intenta cambiar los criterios de búsqueda.</p>
-        </div>
-
-        <!-- PAGINATION SECTION -->
-        <div id="pagination-container" class="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-900/60 border border-slate-800 rounded-2xl p-4">
-            <div class="text-sm text-slate-400">
-                Mostrando página <span id="current-page-num" class="font-bold text-db-yellow">1</span> de <span id="total-pages-num" class="font-bold text-slate-200">6</span>
-            </div>
-
-            <div class="flex items-center gap-2" id="pagination-buttons">
-                <button id="prev-btn" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed border border-slate-700 text-sm font-bold transition flex items-center gap-2 text-slate-200">
-                    <i class="fa-solid fa-chevron-left"></i> Anterior
+            <!-- Right Quick Access Links (Inspirados en la web real: Intranet, Lanbide, Idioma) -->
+            <div class="flex items-center gap-4 text-xs ml-auto sm:ml-0">
+                <a href="#contacto" class="hover:text-brandBlue transition-colors flex items-center gap-1">
+                    <i class="fa-solid fa-phone text-[10px] text-brandBlue"></i> 94 670 60 45
+                </a>
+                <span class="text-slate-600">|</span>
+                <!-- Language Toggle Simulator -->
+                <button onclick="toggleLanguage()" id="langBtn" class="flex items-center gap-1 hover:text-brandOrange font-bold text-slate-300 transition-colors uppercase tracking-wider text-[11px] bg-darkElevated px-2 py-0.5 rounded border border-white/10">
+                    <span id="langLabel">EU / ES</span>
+                    <i class="fa-solid fa-globe text-[10px] text-brandBlue"></i>
                 </button>
-                
-                <div id="page-numbers-wrapper" class="flex gap-1 overflow-x-auto max-w-[200px] sm:max-w-none py-1">
-                    <!-- Dynamic page numbers -->
-                </div>
-
-                <button id="next-btn" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed border border-slate-700 text-sm font-bold transition flex items-center gap-2 text-slate-200">
-                    Siguiente <i class="fa-solid fa-chevron-right"></i>
-                </button>
-            </div>
-        </div>
-    </main>
-
-    <!-- CHARACTER DETAIL MODAL -->
-    <div id="detail-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
-        <div class="relative w-full max-w-4xl bg-slate-900 border border-db-orange/50 rounded-3xl shadow-2xl shadow-db-orange/20 overflow-hidden transform transition-all my-8">
-            
-            <!-- Modal Close Button -->
-            <button id="close-modal-btn" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-slate-950/80 border border-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-
-            <div class="grid grid-cols-1 md:grid-cols-12">
-                <!-- Character Image Header/Side -->
-                <div class="md:col-span-5 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 p-6 flex items-center justify-center relative overflow-hidden min-h-[320px]">
-                    <div class="absolute inset-0 bg-radial from-db-orange/20 to-transparent"></div>
-                    <img id="modal-img" src="" alt="Personaje" class="max-h-[380px] object-contain relative z-10 filter drop-shadow-[0_10px_20px_rgba(255,102,0,0.35)] transition-transform duration-500 hover:scale-105">
-                </div>
-
-                <!-- Character Details Body -->
-                <div class="md:col-span-7 p-6 sm:p-8 flex flex-col justify-between">
-                    <div>
-                        <!-- Title & Affiliation Badge -->
-                        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-                            <span id="modal-race" class="px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-db-orange/20 text-db-orange border border-db-orange/30">
-                                --
-                            </span>
-                            <span id="modal-affiliation" class="px-3 py-1 rounded-full text-xs font-bold tracking-wide bg-slate-800 text-slate-300 border border-slate-700">
-                                --
-                            </span>
-                        </div>
-
-                        <h2 id="modal-title" class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-100 mb-4 tracking-wider">
-                            --
-                        </h2>
-
-                        <!-- Ki Stats Cards -->
-                        <div class="grid grid-cols-2 gap-3 mb-6">
-                            <div class="bg-slate-950/70 border border-slate-800 rounded-2xl p-3">
-                                <span class="block text-xs text-slate-400 uppercase font-semibold mb-1">Ki Base</span>
-                                <span id="modal-ki" class="font-heading text-lg font-bold text-db-yellow flex items-center gap-1.5">
-                                    <i class="fa-solid fa-bolt text-xs"></i> --
-                                </span>
-                            </div>
-                            <div class="bg-slate-950/70 border border-slate-800 rounded-2xl p-3">
-                                <span class="block text-xs text-slate-400 uppercase font-semibold mb-1">Ki Máximo</span>
-                                <span id="modal-max-ki" class="font-heading text-lg font-bold text-db-orange flex items-center gap-1.5">
-                                    <i class="fa-solid fa-fire text-xs"></i> --
-                                </span>
-                            </div>
-                        </div>
-
-                        <!-- Description -->
-                        <div class="mb-6">
-                            <h4 class="text-xs uppercase font-bold tracking-widest text-slate-400 mb-2">Biografía & Historia</h4>
-                            <p id="modal-description" class="text-slate-300 text-sm leading-relaxed max-h-48 overflow-y-auto pr-2">
-                                --
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Additional Metadata Footer -->
-                    <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
-                        <span>Género: <strong id="modal-gender" class="text-slate-200">--</strong></span>
-                        <span class="text-slate-500">ID API: #<span id="modal-id">--</span></span>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="bg-slate-950 border-t border-slate-800/80 py-6 text-center text-xs text-slate-500">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <p>© Dragon Ball Codex - Impulsado por <a href="https://dragonball-api.com" target="_blank" class="text-db-orange hover:underline font-semibold">Dragon Ball API</a></p>
-            <p>Diseñado con Tailwind CSS & Vanilla JS</p>
+    <!-- MAIN STICKY NAVBAR -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-white/10 transition-all duration-300" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Somorrostro Logo & Brand Identifier -->
+            <a href="#" class="flex items-center gap-3.5 group">
+                <div class="relative w-12 h-12 rounded-xl bg-gradient-to-br from-brandBlue via-sky-500 to-brandOrange p-[2px] shadow-neon-blue group-hover:scale-105 transition-transform duration-300">
+                    <div class="w-full h-full bg-darkBg rounded-[10px] flex items-center justify-center">
+                        <div class="text-center font-display leading-none">
+                            <span class="text-white font-black text-sm block">CF</span>
+                            <span class="text-brandOrange font-extrabold text-[10px] block">SOM</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-display font-black text-xl sm:text-2xl tracking-tight text-white group-hover:text-sky-300 transition-colors">
+                            SOMORROSTRO
+                        </span>
+                        <span class="text-[10px] font-black px-2 py-0.5 bg-brandOrange/20 border border-brandOrange/40 text-brandOrange rounded uppercase tracking-wider">
+                            CANTERA TECH
+                        </span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 font-medium tracking-wide">
+                        Centro de Formación &bull; San Juan 10, Muskiz
+                    </p>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Menu -->
+            <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-300">
+                <a href="#inicio" class="text-white hover:text-brandBlue transition-colors flex items-center gap-1.5" data-i18n="nav_inicio">
+                    <i class="fa-solid fa-house text-xs text-brandBlue"></i> Inicio
+                </a>
+                <a href="#ethazi" class="hover:text-brandBlue transition-colors" data-i18n="nav_ethazi">
+                    Metodología Ethazi
+                </a>
+                <a href="#talleres" class="hover:text-brandBlue transition-colors flex items-center gap-1.5" data-i18n="nav_talleres">
+                    Talleres Informática
+                    <span class="px-1.5 py-0.5 bg-brandBlue/20 text-brandBlue text-[10px] font-bold rounded-full border border-brandBlue/30">SMR · ASIR · DAM/W</span>
+                </a>
+                <a href="#vida-centro" class="hover:text-brandBlue transition-colors" data-i18n="nav_campus">
+                    Campus & Vida Diaria
+                </a>
+                <a href="#cifras" class="hover:text-brandBlue transition-colors" data-i18n="nav_cifras">
+                    Cifras de Éxito
+                </a>
+                <a href="#test-vocacion" class="hover:text-brandOrange transition-colors text-slate-200" data-i18n="nav_test">
+                    <i class="fa-solid fa-wand-magic-sparkles text-brandOrange mr-1"></i>Test Tech
+                </a>
+                <a href="#contacto" class="hover:text-brandBlue transition-colors" data-i18n="nav_contacto">
+                    Contacto
+                </a>
+            </nav>
+
+            <!-- CTA Actions: Direct link to admissions & orientation -->
+            <div class="hidden sm:flex items-center gap-3">
+                <a href="#contacto" class="relative group overflow-hidden rounded-xl bg-gradient-to-r from-brandBlue to-brandOrange p-[1px] shadow-neon-orange hover:shadow-neon-blue transition-all duration-300">
+                    <div class="px-5 py-2.5 rounded-[11px] bg-darkBg group-hover:bg-opacity-80 transition-all flex items-center gap-2">
+                        <span class="font-display font-bold text-sm text-white tracking-wide uppercase" data-i18n="cta_unete">
+                            ¡Únete a la Cantera!
+                        </span>
+                        <i class="fa-solid fa-arrow-right text-xs text-brandOrange group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobileMenuBtn" aria-label="Abrir Menú" class="lg:hidden w-11 h-11 rounded-lg bg-darkElevated border border-white/10 flex items-center justify-center text-slate-300 hover:text-white focus:outline-none">
+                <i class="fa-solid fa-bars-staggered text-lg" id="menuIcon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobileMenu" class="hidden lg:hidden glass-panel border-t border-white/10 px-6 py-6 space-y-4">
+            <a href="#inicio" class="block text-slate-200 hover:text-brandBlue font-semibold mobile-nav-link"><i class="fa-solid fa-house w-6 text-brandBlue"></i> Inicio</a>
+            <a href="#ethazi" class="block text-slate-200 hover:text-brandBlue font-semibold mobile-nav-link"><i class="fa-solid fa-diagram-project w-6 text-brandOrange"></i> Metodología ETHAZI por Retos</a>
+            <a href="#talleres" class="block text-slate-200 hover:text-brandBlue font-semibold mobile-nav-link"><i class="fa-solid fa-laptop-code w-6 text-brandBlue"></i> Talleres de Informática (SMR, ASIR, DAM/W)</a>
+            <a href="#vida-centro" class="block text-slate-200 hover:text-brandBlue font-semibold mobile-nav-link"><i class="fa-solid fa-users-gear w-6 text-brandOrange"></i> La Vida en el Centro (3 Claves)</a>
+            <a href="#cifras" class="block text-slate-200 hover:text-brandBlue font-semibold mobile-nav-link"><i class="fa-solid fa-chart-line w-6 text-brandBlue"></i> Impacto & Empleabilidad (+96%)</a>
+            <a href="#test-vocacion" class="block text-slate-200 hover:text-brandOrange font-semibold mobile-nav-link"><i class="fa-solid fa-wand-magic-sparkles w-6 text-brandOrange"></i> Test Vocacional Rápido (1 min)</a>
+            <a href="#contacto" class="block text-slate-200 hover:text-brandBlue font-semibold mobile-nav-link"><i class="fa-solid fa-location-dot w-6 text-brandBlue"></i> San Juan 10, Muskiz</a>
+            
+            <div class="pt-4 border-t border-white/10">
+                <a href="#contacto" class="w-full flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-brandBlue to-brandOrange text-white font-bold rounded-xl shadow-neon-orange mobile-nav-link">
+                    <span>Solicitar Plaza / Visita a Talleres</span>
+                    <i class="fa-solid fa-rocket"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main id="inicio">
+
+        <!-- HERO SECTION: LA CANTERA TECNOLÓGICA (Inspirada en el lema de somorrostro.com "Tu futuro empieza aquí") -->
+        <section class="relative min-h-[92vh] flex items-center justify-center pt-8 pb-20 overflow-hidden somorrostro-grid">
+            <!-- Glow background lights -->
+            <div class="absolute top-1/4 -left-32 w-[450px] h-[450px] ambient-glow-blue pointer-events-none rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 right-0 w-[550px] h-[550px] ambient-glow-orange pointer-events-none rounded-full blur-3xl"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                    
+                    <!-- Left Hero Info -->
+                    <div class="lg:col-span-7 text-left space-y-6">
+                        
+                        <!-- Official Motto Badge inspired by somorrostro.com -->
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-darkElevated border border-white/10 text-xs text-slate-300 shadow-inner">
+                            <span class="w-2.5 h-2.5 rounded-full bg-brandOrange animate-ping"></span>
+                            <span class="font-bold text-white tracking-wide">RUTA A: LA CANTERA TECNOLÓGICA</span>
+                            <span class="text-slate-500">|</span>
+                            <span class="text-sky-400 font-semibold italic">«Tu futuro empieza aquí»</span>
+                        </div>
+
+                        <!-- Main Headline -->
+                        <h1 class="font-display font-black text-4xl sm:text-5xl xl:text-6xl text-white tracking-tight leading-[1.12]">
+                            Donde tu talento digital <br>
+                            se transforma en <span class="bg-gradient-to-r from-brandBlue via-sky-400 to-brandOrange bg-clip-text text-transparent">futuro real</span>.
+                        </h1>
+
+                        <!-- Creative Manifesto & Inspiration from somorrostro.com -->
+                        <p class="text-lg sm:text-xl text-slate-300 max-w-2xl font-normal leading-relaxed">
+                            Fundado en 1947 en Muskiz, en el <strong class="text-white font-semibold">Centro de Formación Somorrostro</strong> creemos en el aprendizaje vivo: un campus de más de 75.000 m² donde los libros se sustituyen por <span class="text-brandOrange font-semibold">retos reales (ETHAZI)</span>, espíritu de equipo y talleres punteros de <span class="text-brandBlue font-semibold">Montaje</span>, <span class="text-brandBlue font-semibold">Redes</span> y <span class="text-brandBlue font-semibold">Desarrollo Web</span>.
+                        </p>
+
+                        <!-- Key Pillars Grid (Ethazi, Comunidad, Dual) -->
+                        <div class="grid grid-cols-3 gap-3 pt-2 max-w-xl">
+                            <div class="p-3 rounded-xl bg-darkCard/90 border border-white/10 flex flex-col gap-1">
+                                <div class="text-brandBlue font-bold text-sm flex items-center gap-1.5">
+                                    <i class="fa-solid fa-users-line"></i> Compañerismo
+                                </div>
+                                <span class="text-[11px] text-slate-400">Trabajo colaborativo sin notas memorizadas</span>
+                            </div>
+                            <div class="p-3 rounded-xl bg-darkCard/90 border border-white/10 flex flex-col gap-1">
+                                <div class="text-brandOrange font-bold text-sm flex items-center gap-1.5">
+                                    <i class="fa-solid fa-bolt"></i> Retos Ethazi
+                                </div>
+                                <span class="text-[11px] text-slate-400">Proyectos basados en necesidades reales</span>
+                            </div>
+                            <div class="p-3 rounded-xl bg-darkCard/90 border border-white/10 flex flex-col gap-1">
+                                <div class="text-sky-400 font-bold text-sm flex items-center gap-1.5">
+                                    <i class="fa-solid fa-briefcase"></i> FP Dual
+                                </div>
+                                <span class="text-[11px] text-slate-400">Prácticas remuneradas en empresas líderes</span>
+                            </div>
+                        </div>
+
+                        <!-- CTA Action Buttons -->
+                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
+                            <!-- Primary CTA Button -->
+                            <a href="#talleres" class="group relative px-7 py-4 rounded-xl bg-brandOrange hover:bg-brandOrange-hover text-white font-display font-extrabold text-base tracking-wide shadow-neon-orange transition-all duration-300 flex items-center justify-center gap-3">
+                                <span>EXPLORA LOS 3 TALLERES TECH</span>
+                                <i class="fa-solid fa-arrow-down-long group-hover:translate-y-1 transition-transform"></i>
+                            </a>
+
+                            <!-- Secondary CTA Button -->
+                            <a href="#test-vocacion" class="px-6 py-4 rounded-xl bg-darkElevated hover:bg-slate-800 text-slate-200 hover:text-white font-bold text-sm border border-white/10 hover:border-brandBlue transition-all duration-300 flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-wand-magic-sparkles text-brandOrange"></i>
+                                <span>¿Qué rama tech va contigo? (Test 1 min)</span>
+                            </a>
+                        </div>
+
+                        <!-- Institutional Footprint Badge -->
+                        <div class="flex items-center gap-3 pt-2 text-xs text-slate-400">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                            <span>Más de <strong class="text-white">1.800 alumnos y alumnas</strong> se forman cada año en nuestras instalaciones de San Juan 10, Muskiz.</span>
+                        </div>
+                    </div>
+
+                    <!-- Right Hero Interactive Showcase / Live Terminal of Somorrostro -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="relative mx-auto max-w-md lg:max-w-none">
+                            <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-brandBlue via-sky-500 to-brandOrange opacity-30 blur-xl"></div>
+
+                            <!-- High-Tech Window Representation -->
+                            <div class="relative rounded-2xl bg-darkCard border border-white/15 shadow-2xl overflow-hidden">
+                                
+                                <!-- Top Bar Window -->
+                                <div class="px-4 py-3 bg-darkBg border-b border-white/10 flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-3 h-3 rounded-full bg-rose-500/80"></div>
+                                        <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
+                                        <div class="w-3 h-3 rounded-full bg-emerald-500/80"></div>
+                                        <span class="ml-2 font-mono text-xs text-slate-400 font-medium">somorrostro-tech:~/ethazi-hub$</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                        <span class="text-[10px] font-mono text-emerald-400 uppercase font-semibold">AULAS CONECTADAS</span>
+                                    </div>
+                                </div>
+
+                                <!-- Terminal Body with Real Cycles from somorrostro.com -->
+                                <div class="p-5 font-mono text-xs space-y-3.5 bg-[#090e1a]/95 text-slate-300">
+                                    <div class="p-3 rounded-lg bg-darkSurface border border-brandBlue/30">
+                                        <div class="flex justify-between items-center text-brandBlue font-bold pb-1 mb-1 border-b border-brandBlue/20">
+                                            <span>[PROYECTO ETHAZI INTERCICLOS]</span>
+                                            <span class="text-xs text-brandOrange font-bold">SPRINT 4</span>
+                                        </div>
+                                        <p class="text-white font-medium">"Infraestructura Segura de Telemetría para Industria 4.0"</p>
+                                        <p class="text-[11px] text-slate-400 mt-1">Colaboración entre alumnos de <strong class="text-sky-300">SMR</strong>, <strong class="text-sky-300">ASIR</strong> y <strong class="text-sky-300">DAM/DAW</strong></p>
+                                    </div>
+
+                                    <!-- Status of the 3 key IT areas -->
+                                    <div class="space-y-2.5 pt-1">
+                                        <div>
+                                            <div class="flex justify-between text-[11px] mb-1">
+                                                <span class="text-slate-300"><i class="fa-solid fa-microchip text-brandOrange mr-1"></i> Taller SMR (Montaje & Hardware)</span>
+                                                <span class="text-emerald-400 font-semibold">100% Operativo</span>
+                                            </div>
+                                            <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                                                <div class="h-full bg-brandOrange rounded-full w-[95%]"></div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="flex justify-between text-[11px] mb-1">
+                                                <span class="text-slate-300"><i class="fa-solid fa-network-wired text-brandBlue mr-1"></i> Lab ASIR (Racks, Cisco & Cloud)</span>
+                                                <span class="text-sky-400 font-semibold">VLANs / Enrutado Activo</span>
+                                            </div>
+                                            <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                                                <div class="h-full bg-brandBlue rounded-full w-[90%]"></div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="flex justify-between text-[11px] mb-1">
+                                                <span class="text-slate-300"><i class="fa-solid fa-code text-emerald-400 mr-1"></i> Tech Hub DAM/DAW (Full-stack Web)</span>
+                                                <span class="text-emerald-400 font-semibold">CI/CD Deploy Success</span>
+                                            </div>
+                                            <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                                                <div class="h-full bg-emerald-500 rounded-full w-[98%]"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Ethazi manifesto footer in terminal -->
+                                    <div class="pt-2 text-slate-400 border-t border-white/5 flex items-center justify-between text-[11px]">
+                                        <span><i class="fa-solid fa-building-flag text-brandOrange mr-1"></i> Edificios Lanberri & Suberri</span>
+                                        <span class="text-slate-500">Muskiz · Bizkaia</span>
+                                    </div>
+                                </div>
+
+                                <!-- Terminal bottom pill -->
+                                <div class="px-4 py-2.5 bg-gradient-to-r from-brandBlue/20 to-brandOrange/20 border-t border-white/10 flex items-center justify-between text-xs">
+                                    <span class="text-slate-300 font-semibold"><i class="fa-solid fa-handshake text-brandBlue mr-1"></i> Compañerismo &bull; Sin exámenes memorísticos</span>
+                                    <span class="text-brandOrange font-bold">100% Práctico</span>
+                                </div>
+                            </div>
+
+                            <!-- Floating Badges for visual depth -->
+                            <div class="absolute -bottom-5 -left-5 bg-darkElevated/95 border border-brandOrange/40 rounded-xl p-3 shadow-neon-orange hidden sm:flex items-center gap-3 backdrop-blur-md animate-floatSlow">
+                                <div class="w-10 h-10 rounded-lg bg-brandOrange/20 text-brandOrange flex items-center justify-center font-bold text-lg">
+                                    <i class="fa-solid fa-rocket"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold text-white">Metodología ETHAZI</div>
+                                    <div class="text-[11px] text-slate-400">Aprende resolviendo retos reales</div>
+                                </div>
+                            </div>
+
+                            <div class="absolute -top-5 -right-5 bg-darkElevated/95 border border-brandBlue/40 rounded-xl p-3 shadow-neon-blue hidden sm:flex items-center gap-3 backdrop-blur-md">
+                                <div class="w-10 h-10 rounded-lg bg-brandBlue/20 text-brandBlue flex items-center justify-center font-bold text-lg">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold text-white">Bolsa Lanberri</div>
+                                    <div class="text-[11px] text-slate-400">Empleabilidad directa en IT</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTADOR INTERACTIVO & CIFRAS DE IMPACTO (JavaScript animado con IntersectionObserver) -->
+        <section id="cifras" class="relative py-16 bg-[#080d17] border-y border-white/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-brandBlue bg-brandBlue/10 px-3.5 py-1 rounded-full border border-brandBlue/20">
+                        Resultados Comprobados &bull; Somorrostro en Cifras
+                    </span>
+                    <h2 class="font-display font-black text-3xl sm:text-4xl text-white mt-3">
+                        El Impacto de Nuestra Cantera Tecnológica
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base mt-2">
+                        Indicadores reales del modelo pedagógico y de inserción profesional del Centro de Formación Somorrostro.
+                    </p>
+                </div>
+
+                <!-- 4 Animated Stats Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="statsContainer">
+                    
+                    <!-- Stat 1: Inserción -->
+                    <div class="glass-panel p-6 rounded-2xl border border-white/5 relative overflow-hidden group hover:border-brandBlue/40 transition-colors">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-brandBlue/10 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+                        <div class="w-12 h-12 rounded-xl bg-brandBlue/15 text-brandBlue flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-user-check"></i>
+                        </div>
+                        <div class="flex items-baseline gap-1">
+                            <span class="font-display font-black text-4xl sm:text-5xl text-white counter-number" data-target="96">0</span>
+                            <span class="font-display font-bold text-3xl text-brandBlue">%</span>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-200 mt-2">Inserción Laboral Directa</h3>
+                        <p class="text-xs text-slate-400 mt-1">Alumnado de la rama de informática contratado en empresas o que accede a grados universitarios y especialización.</p>
+                    </div>
+
+                    <!-- Stat 2: Retos Ethazi -->
+                    <div class="glass-panel p-6 rounded-2xl border border-white/5 relative overflow-hidden group hover:border-brandOrange/40 transition-colors">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-brandOrange/10 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+                        <div class="w-12 h-12 rounded-xl bg-brandOrange/15 text-brandOrange flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-diagram-project"></i>
+                        </div>
+                        <div class="flex items-baseline gap-1">
+                            <span class="font-display font-black text-4xl sm:text-5xl text-white counter-number" data-target="450">0</span>
+                            <span class="font-display font-bold text-3xl text-brandOrange">+</span>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-200 mt-2">Retos ETHAZI Superados</h3>
+                        <p class="text-xs text-slate-400 mt-1">Proyectos reales resueltos anualmente por equipos de trabajo multidisciplinares en el campus.</p>
+                    </div>
+
+                    <!-- Stat 3: Horas Prácticas en Talleres -->
+                    <div class="glass-panel p-6 rounded-2xl border border-white/5 relative overflow-hidden group hover:border-sky-400/40 transition-colors">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-sky-400/10 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+                        <div class="w-12 h-12 rounded-xl bg-sky-400/15 text-sky-400 flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                        </div>
+                        <div class="flex items-baseline gap-1">
+                            <span class="font-display font-black text-4xl sm:text-5xl text-white counter-number" data-target="1500">0</span>
+                            <span class="font-display font-bold text-3xl text-sky-400">h</span>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-200 mt-2">Horas Prácticas Reales</h3>
+                        <p class="text-xs text-slate-400 mt-1">Manipulando componentes físicos, configurando servidores de red y programando software.</p>
+                    </div>
+
+                    <!-- Stat 4: Red de Empresas Colaboradoras -->
+                    <div class="glass-panel p-6 rounded-2xl border border-white/5 relative overflow-hidden group hover:border-brandOrange/40 transition-colors">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-brandOrange/10 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+                        <div class="w-12 h-12 rounded-xl bg-brandOrange/15 text-brandOrange flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-handshake-angle"></i>
+                        </div>
+                        <div class="flex items-baseline gap-1">
+                            <span class="font-display font-black text-4xl sm:text-5xl text-white counter-number" data-target="280">0</span>
+                            <span class="font-display font-bold text-3xl text-brandOrange">+</span>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-200 mt-2">Empresas con Convenio Dual</h3>
+                        <p class="text-xs text-slate-400 mt-1">Colaboración estrecha con firmas tecnológicas e industriales de Bizkaia y el País Vasco.</p>
+                    </div>
+
+                </div>
+
+                <!-- Interactive Live Metric Trigger & Notice -->
+                <div class="mt-10 p-5 rounded-2xl bg-darkElevated border border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></div>
+                        <span class="text-sm text-slate-300">
+                            ¿Quieres volver a ver la animación de métricas de impacto de Somorrostro?
+                        </span>
+                    </div>
+                    <button onclick="retriggerCounters()" class="px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-bold text-slate-200 hover:text-white transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-arrows-rotate text-brandBlue"></i>
+                        <span>Reactivar contador interactivo</span>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN METODOLOGÍA ETHAZI: APRENDIZAJE POR RETOS -->
+        <section id="ethazi" class="py-20 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brandOrange/15 border border-brandOrange/30 text-xs font-bold text-brandOrange uppercase tracking-wider mb-3">
+                        <i class="fa-solid fa-lightbulb"></i> Modelo Educativo Pionero · Tknika & FP Euskadi
+                    </div>
+                    <h2 class="font-display font-black text-3xl sm:text-5xl text-white tracking-tight">
+                        Metodología ETHAZI: <span class="text-brandBlue">Aprende Haciendo</span>
+                    </h2>
+                    <p class="text-slate-300 text-base sm:text-lg mt-4 leading-relaxed">
+                        En Somorrostro decimos adiós a los apuntes estériles memorizados para un examen. 
+                        Trabajamos con el modelo <strong class="text-white">ETHAZI (Eredu Berria)</strong>: una dinámica colaborativa en la que adquieres competencias técnicas y habilidades humanas resolviendo casos reales propuestos por empresas.
+                    </p>
+                </div>
+
+                <!-- 4 Steps of Ethazi -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+                    
+                    <!-- Paso 1 -->
+                    <div class="glass-card-interactive p-6 rounded-2xl relative">
+                        <div class="w-12 h-12 rounded-xl bg-brandBlue/20 text-brandBlue border border-brandBlue/30 flex items-center justify-center font-bold text-lg mb-4">
+                            01
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-white mb-2">El Desafío Real</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            Una empresa del tejido industrial de Bizkaia o el claustro plantea un reto auténtico: migrar una infraestructura a la nube, auditar una red o programar un dashboard analítico.
+                        </p>
+                        <div class="mt-4 pt-3 border-t border-white/5 text-xs text-brandBlue font-semibold flex items-center gap-1">
+                            <i class="fa-solid fa-flag-checkered"></i> Planteamiento
+                        </div>
+                    </div>
+
+                    <!-- Paso 2 -->
+                    <div class="glass-card-interactive p-6 rounded-2xl relative">
+                        <div class="w-12 h-12 rounded-xl bg-brandOrange/20 text-brandOrange border border-brandOrange/30 flex items-center justify-center font-bold text-lg mb-4">
+                            02
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-white mb-2">Célula de Trabajo</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            Te integras en un equipo autónomo con roles rotativos (Project Leader, Administrador de Sistemas, Desarrollador, Tester). Se fomenta la comunicación y la empatía.
+                        </p>
+                        <div class="mt-4 pt-3 border-t border-white/5 text-xs text-brandOrange font-semibold flex items-center gap-1">
+                            <i class="fa-solid fa-users"></i> Compañerismo
+                        </div>
+                    </div>
+
+                    <!-- Paso 3 -->
+                    <div class="glass-card-interactive p-6 rounded-2xl relative">
+                        <div class="w-12 h-12 rounded-xl bg-sky-400/20 text-sky-400 border border-sky-400/30 flex items-center justify-center font-bold text-lg mb-4">
+                            03
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-white mb-2">Manos al Taller</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            Ensambláis hardware, configuráis switches Cisco, desplegáis contenedores Docker y escribís código en GitHub. Ensayáis, corregís errores y optimizáis.
+                        </p>
+                        <div class="mt-4 pt-3 border-t border-white/5 text-xs text-sky-400 font-semibold flex items-center gap-1">
+                            <i class="fa-solid fa-screwdriver-wrench"></i> 100% Práctica
+                        </div>
+                    </div>
+
+                    <!-- Paso 4 -->
+                    <div class="glass-card-interactive p-6 rounded-2xl relative">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-400/20 text-emerald-400 border border-emerald-400/30 flex items-center justify-center font-bold text-lg mb-4">
+                            04
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-white mb-2">Defensa & Validación</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            El equipo presenta la solución terminada ante el cliente y el tutor. Evaluamos la solvencia técnica, la calidad del entregable y el trabajo en equipo.
+                        </p>
+                        <div class="mt-4 pt-3 border-t border-white/5 text-xs text-emerald-400 font-semibold flex items-center gap-1">
+                            <i class="fa-solid fa-award"></i> Preparación Laboral
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Quote & Difference Box -->
+                <div class="mt-12 glass-panel p-8 rounded-3xl border border-brandBlue/30 bg-gradient-to-r from-brandBlue/10 via-darkCard to-brandOrange/10">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                        <div class="md:col-span-2 space-y-3">
+                            <span class="text-xs uppercase font-bold tracking-widest text-brandOrange">¿Por qué este método cambia tu carrera?</span>
+                            <h3 class="font-display font-black text-2xl sm:text-3xl text-white">
+                                Las empresas no buscan memorizadores; buscan profesionales resolutivos
+                            </h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Quien se forma en Somorrostro con la metodología ETHAZI se incorpora a una empresa el primer día sabiendo comunicarse con sus compañeros, gestionar imprevistos en sistemas informáticos y liderar proyectos tecnológicos reales.
+                            </p>
+                        </div>
+                        <div class="flex flex-col gap-3 justify-center">
+                            <div class="p-3 bg-darkBg/90 rounded-xl border border-white/10 flex items-center gap-3">
+                                <i class="fa-solid fa-check text-brandBlue text-xl"></i>
+                                <span class="text-xs font-semibold text-white">Evaluación continua de competencias</span>
+                            </div>
+                            <div class="p-3 bg-darkBg/90 rounded-xl border border-white/10 flex items-center gap-3">
+                                <i class="fa-solid fa-check text-brandOrange text-xl"></i>
+                                <span class="text-xs font-semibold text-white">Espacios de co-working dinámicos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3 TARJETAS DE TALLERES DE INFORMÁTICA (SMR, ASIR, DAM/DAW) -->
+        <section id="talleres" class="py-20 bg-darkBg relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brandBlue/15 border border-brandBlue/30 text-xs font-bold text-brandBlue uppercase tracking-wider mb-3">
+                            <i class="fa-solid fa-microchip"></i> Instalaciones Profesionales
+                        </div>
+                        <h2 class="font-display font-black text-3xl sm:text-5xl text-white tracking-tight">
+                            Los 3 Talleres de Informática
+                        </h2>
+                        <p class="text-slate-400 text-base sm:text-lg mt-3 max-w-2xl">
+                            Tres laboratorios especializados dotados con infraestructura de nivel empresarial en los edificios formativos del campus en Muskiz.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs font-semibold text-slate-400 bg-darkCard px-4 py-2.5 rounded-xl border border-white/10">
+                        <i class="fa-solid fa-school text-brandOrange"></i> Edificios Lanberri & Suberri &bull; San Juan 10, Muskiz
+                    </div>
+                </div>
+
+                <!-- 3 CARDS GRID -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    
+                    <!-- TARJETA 1: Taller de Montaje y Mantenimiento de Hardware (SMR) -->
+                    <div class="glass-card-interactive rounded-3xl overflow-hidden flex flex-col border border-white/10 group">
+                        
+                        <!-- Visual Header -->
+                        <div class="h-52 bg-gradient-to-br from-slate-900 via-darkElevated to-slate-900 relative p-6 flex flex-col justify-between overflow-hidden border-b border-white/10">
+                            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-brandOrange/20 rounded-full blur-2xl group-hover:bg-brandOrange/30 transition-colors"></div>
+                            <div class="absolute top-4 right-4 text-slate-700 text-6xl opacity-30 font-display font-black pointer-events-none">
+                                01
+                            </div>
+
+                            <div class="flex items-center justify-between relative z-10">
+                                <span class="px-3 py-1 rounded-full bg-brandOrange/20 border border-brandOrange/40 text-brandOrange font-bold text-xs tracking-wider uppercase">
+                                    Grado Medio · SMR
+                                </span>
+                                <div class="w-10 h-10 rounded-xl bg-darkBg/80 border border-white/15 flex items-center justify-center text-brandOrange">
+                                    <i class="fa-solid fa-screwdriver-wrench text-lg"></i>
+                                </div>
+                            </div>
+
+                            <div class="relative z-10">
+                                <h3 class="font-display font-black text-2xl text-white group-hover:text-brandOrange transition-colors">
+                                    Taller de Montaje y Mantenimiento
+                                </h3>
+                                <p class="text-xs text-slate-300 mt-1">Sistemas Microinformáticos, hardware y electrónica básica</p>
+                            </div>
+                        </div>
+
+                        <!-- Body -->
+                        <div class="p-6 flex-1 flex flex-col justify-between space-y-6">
+                            <p class="text-sm text-slate-300 leading-relaxed">
+                                Aprende a ensamblar estaciones de trabajo y servidores desde cero en bancos con protección electrostática (ESD). Realiza diagnósticos con polímetros y osciloscopios, sustituye procesadores, refrigera componentes y recupera sistemas lógicos.
+                            </p>
+
+                            <!-- Key Points -->
+                            <div class="space-y-2.5">
+                                <h4 class="text-xs uppercase font-extrabold text-slate-400 tracking-wider">¿Qué dominarás en este taller?</h4>
+                                <ul class="space-y-2 text-xs text-slate-300">
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-brandOrange mt-0.5"></i>
+                                        <span>Ensamblaje y modding de equipos avanzados y servidores rack.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-brandOrange mt-0.5"></i>
+                                        <span>Diagnóstico electrónico de fuentes, placas base y memorias RAM.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-brandOrange mt-0.5"></i>
+                                        <span>Instalación y clonación masiva de sistemas Windows y GNU/Linux.</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Tech Tags -->
+                            <div>
+                                <h4 class="text-xs uppercase font-extrabold text-slate-400 tracking-wider mb-2">Equipamiento del Taller</h4>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="px-2.5 py-1 rounded-md bg-darkElevated text-[11px] font-mono text-slate-300 border border-white/5">Bancos ESD</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-darkElevated text-[11px] font-mono text-slate-300 border border-white/5">Intel Core / Ryzen</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-darkElevated text-[11px] font-mono text-slate-300 border border-white/5">NVMe PCIe Gen5</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-darkElevated text-[11px] font-mono text-slate-300 border border-white/5">Clonezilla / Ventoy</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-darkElevated text-[11px] font-mono text-slate-300 border border-white/5">UEFI / BIOS Mod</span>
+                                </div>
+                            </div>
+
+                            <!-- Action Modal Button -->
+                            <button onclick="openWorkshopModal('montaje')" class="w-full py-3 rounded-xl bg-darkElevated hover:bg-brandOrange hover:text-white border border-white/10 hover:border-brandOrange text-slate-200 font-bold text-xs tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2">
+                                <span>Ver ficha técnica del taller</span>
+                                <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- TARJETA 2: Laboratorio de Redes y Ciberseguridad (ASIR) -->
+                    <div class="glass-card-interactive rounded-3xl overflow-hidden flex flex-col border border-white/10 group">
+                        
+                        <!-- Visual Header -->
+                        <div class="h-52 bg-gradient-to-br from-slate-900 via-darkElevated to-slate-900 relative p-6 flex flex-col justify-between overflow-hidden border-b border-white/10">
+                            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-brandBlue/20 rounded-full blur-2xl group-hover:bg-brandBlue/30 transition-colors"></div>
+                            <div class="absolute top-4 right-4 text-slate-700 text-6xl opacity-30 font-display font-black pointer-events-none">
+                                02
+                            </div>
+
+                            <div class="flex items-center justify-between relative z-10">
+                                <span class="px-3 py-1 rounded-full bg-brandBlue/20 border border-brandBlue/40 text-brandBlue font-bold text-xs tracking-wider uppercase">
+                                    Grado Superior · ASIR
+                                </span>
+                                <div class="w-10 h-10 rounded-xl bg-darkBg/80 border border-white/15 flex items-center justify-center text-brandBlue">
+                                    <i class="fa-solid fa-network-wired text-lg"></i>
+                                </div>
+                            </div>
+
+                            <div class="relative z-10">
+                                <h3 class="font-display font-black text-2xl text-white group-hover:text-brandBlue transition-colors">
+                                    Laboratorio de Redes y Servidores
+                                </h3>
+                                <p class="text-xs text-slate-300 mt-1">Infraestructuras críticas, conmutación Cisco y ciberseguridad</p>
+                            </div>
+                        </div>
+
+                        <!-- Body -->
+                        <div class="p-6 flex-1 flex flex-col justify-between space-y-6">
+                            <p class="text-sm text-slate-300 leading-relaxed">
+                                Administra armarios rack de 42U reales. Tira cableado estructurado Cat6A y realiza fusiones de fibra óptica. Configura switches gestionados Cisco, protocolos de enrutamiento OSPF y cortafuegos perimetrales pfSense.
+                            </p>
+
+                            <!-- Key Points -->
+                            <div class="space-y-2.5">
+                                <h4 class="text-xs uppercase font-extrabold text-slate-400 tracking-wider">¿Qué dominarás en este taller?</h4>
+                                <ul class="space-y-2 text-xs text-slate-300">
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-brandBlue mt-0.5"></i>
+                                        <span>Segmentación mediante VLANs, Trunking 802.1Q y routers Cisco.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-brandBlue mt-0.5"></i>
+                                        <span>Fusión de enlaces de fibra óptica y certificación de cableado.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-brandBlue mt-0.5"></i>
+                                        <span>Virtualización empresarial con Proxmox, VMware y contenedores Docker.</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Tech Tags -->
+                            <div>
+                                <h4 class="text-xs uppercase font-extrabold text-slate-400 tracking-wider mb-2">Equipamiento del Taller</h4>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="px-2.5 py-1 rounded-md bg-darkElevated text-[11px] font-mono text-slate-300 border border-white/5">Cisco IOS</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-darkElevated text-[11px] font-mono text-slate-300 border border-white/5">Racks 42U</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-darkElevated text-[11px] font-mono text-slate-300 border border-white/5">Wireshark</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-darkElevated text-[11px] font-mono text-slate-300 border border-white/5">pfSense Firewall</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-darkElevated text-[11px] font-mono text-slate-300 border border-white/5">Proxmox / Docker</span>
+                                </div>
+                            </div>
+
+                            <!-- Action Modal Button -->
+                            <button onclick="openWorkshopModal('redes')" class="w-full py-3 rounded-xl bg-darkElevated hover:bg-brandBlue hover:text-white border border-white/10 hover:border-brandBlue text-slate-200 font-bold text-xs tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2">
+                                <span>Ver ficha técnica del taller</span>
+                                <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- TARJETA 3: Tech Hub de Desarrollo Web y Apps (DAM & DAW) -->
+                    <div class="glass-card-interactive rounded-3xl overflow-hidden flex flex-col border border-white/10 group">
+                        
+                        <!-- Visual Header -->
+                        <div class="h-52 bg-gradient-to-br from-slate-900 via-darkElevated to-slate-900 relative p-6 flex flex-col justify-between overflow-hidden border-b border-white/10">
+                            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-emerald-500/20 rounded-full blur-2xl group-hover:bg-emerald-500/30 transition-colors"></div>
+                            <div class="absolute top-4 right-4 text-slate-700 text-6xl opacity-30 font-display font-black pointer-events-none">
+                                03
+                            </div>
+
+                            <div class="flex items-center justify-between relative z-10">
+                                <span class="px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 font-bold text-xs tracking-wider uppercase">
+                                    Grado Superior · DAW / DAM
+                                </span>
+                                <div class="w-10 h-10 rounded-xl bg-darkBg/80 border border-white/15 flex items-center justify-center text-emerald-400">
+                                    <i class="fa-solid fa-code text-lg"></i>
+                                </div>
+                            </div>
+
+                            <div class="relative z-10">
+                                <h3 class="font-display font-black text-2xl text-white group-hover:text-emerald-400 transition-colors">
+                                    Tech Hub de Desarrollo Web & Apps
+                                </h3>
+                                <p class="text-xs text-slate-300 mt-1">Full-stack, interfaces responsivas, APIs y bases de datos</p>
+                            </div>
+                        </div>
+
+                        <!-- Body -->
+                        <div class="p-6 flex-1 flex flex-col justify-between space-y-6">
+                            <p class="text-sm text-slate-300 leading-relaxed">
+                                Un entorno colaborativo diseñado para simular una empresa tecnológica moderna. Programa aplicaciones SPA reactivas, diseña arquitecturas cliente-servidor en la nube y gestiona repositorios con flujos Git y metodologías ágiles Scrum.
+                            </p>
+
+                            <!-- Key Points -->
+                            <div class="space-y-2.5">
+                                <h4 class="text-xs uppercase font-extrabold text-slate-400 tracking-wider">¿Qué dominarás en este taller?</h4>
+                                <ul class="space-y-2 text-xs text-slate-300">
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-emerald-400 mt-0.5"></i>
+                                        <span>Frontend con JavaScript moderno, TypeScript, React y Tailwind CSS.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-emerald-400 mt-0.5"></i>
+                                        <span>Backend con Python, PHP/Laravel, Node.js y bases de datos SQL/NoSQL.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-emerald-400 mt-0.5"></i>
+                                        <span>Flujos de trabajo en equipo en GitHub con Pull Requests y despliegue CI/CD.</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Tech Tags -->
+                            <div>
+                                <h4 class="text-xs uppercase font-extrabold text-slate-400 tracking-wider mb-2">Equipamiento del Taller</h4>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="px-2.5 py-1 rounded-md bg-darkElevated text-[11px] font-mono text-slate-300 border border-white/5">JavaScript / TS</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-darkElevated text-[11px] font-mono text-slate-300 border border-white/5">React / Tailwind</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-darkElevated text-[11px] font-mono text-slate-300 border border-white/5">Python / Flask</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-darkElevated text-[11px] font-mono text-slate-300 border border-white/5">MySQL / MongoDB</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-darkElevated text-[11px] font-mono text-slate-300 border border-white/5">Git & GitHub</span>
+                                </div>
+                            </div>
+
+                            <!-- Action Modal Button -->
+                            <button onclick="openWorkshopModal('desarrollo')" class="w-full py-3 rounded-xl bg-darkElevated hover:bg-emerald-500 hover:text-white border border-white/10 hover:border-emerald-500 text-slate-200 font-bold text-xs tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2">
+                                <span>Ver ficha técnica del taller</span>
+                                <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3 PUNTOS DE LA VIDA DIARIA EN EL CENTRO -->
+        <section id="vida-centro" class="py-20 bg-darkElevated/30 border-t border-white/10 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-brandOrange bg-brandOrange/10 px-3.5 py-1 rounded-full border border-brandOrange/20">
+                        Comunidad, Valores & Convivencia
+                    </span>
+                    <h2 class="font-display font-black text-3xl sm:text-5xl text-white mt-3">
+                        La Vida Diaria en Somorrostro
+                    </h2>
+                    <p class="text-slate-300 text-base sm:text-lg mt-3">
+                        El verdadero valor de la cantera reside en el ambiente humano: compañerismo, acompañamiento tutorial cercano y conexión permanente con el tejido productivo.
+                    </p>
+                </div>
+
+                <!-- 3 Pillars of Daily Campus Life -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Punto 1: Compañerismo y Espíritu de Equipo -->
+                    <div class="glass-panel p-8 rounded-3xl border border-white/10 relative overflow-hidden group hover:border-brandBlue/40 transition-all">
+                        <div class="w-14 h-14 rounded-2xl bg-brandBlue/15 text-brandBlue flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-hands-holding-child"></i>
+                        </div>
+                        <div class="inline-block px-2.5 py-0.5 rounded-full bg-brandBlue/10 text-brandBlue text-[11px] font-bold uppercase mb-3">
+                            Pilar 01 &bull; Cultura Somorrostro
+                        </div>
+                        <h3 class="font-display font-black text-2xl text-white mb-3">
+                            Compañerismo Real: Aquí Nadie se Queda Atrás
+                        </h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            En nuestras aulas no existe competencia individualista. Fomentamos el <strong class="text-white">mentoring entre iguales</strong>: quien domina el montaje apoya al que aprende a programar, y viceversa. Los tutores te conocen por tu nombre y te acompañan de manera individualizada en cada reto.
+                        </p>
+                        <div class="mt-6 pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-brandBlue font-semibold">
+                            <i class="fa-solid fa-heart"></i>
+                            <span>Atención cercana y valores humanistas</span>
+                        </div>
+                    </div>
+
+                    <!-- Punto 2: Contacto Diario con Empresas & FP Dual -->
+                    <div class="glass-panel p-8 rounded-3xl border border-white/10 relative overflow-hidden group hover:border-brandOrange/40 transition-all">
+                        <div class="w-14 h-14 rounded-2xl bg-brandOrange/15 text-brandOrange flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-building-circle-check"></i>
+                        </div>
+                        <div class="inline-block px-2.5 py-0.5 rounded-full bg-brandOrange/10 text-brandOrange text-[11px] font-bold uppercase mb-3">
+                            Pilar 02 &bull; Futuro Profesional
+                        </div>
+                        <h3 class="font-display font-black text-2xl text-white mb-3">
+                            Conexión Total con Empresas y Retos Productivos
+                        </h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            A través de nuestro servicio de empleo <strong class="text-white">Lanberri</strong> y convenios con más de 280 empresas de Bizkaia (Petronor, firmas de los Parques Tecnológicos y consultoras IT), cursarás la modalidad de <strong class="text-white">FP Dual remunerada</strong> combinando formación en el campus y trabajo real en empresa.
+                        </p>
+                        <div class="mt-6 pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-brandOrange font-semibold">
+                            <i class="fa-solid fa-briefcase"></i>
+                            <span>Inserción en el mercado desde el primer año</span>
+                        </div>
+                    </div>
+
+                    <!-- Punto 3: Campus Vivo en Muskiz (San Juan 10) -->
+                    <div class="glass-panel p-8 rounded-3xl border border-white/10 relative overflow-hidden group hover:border-sky-400/40 transition-all">
+                        <div class="w-14 h-14 rounded-2xl bg-sky-400/15 text-sky-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-tree-city"></i>
+                        </div>
+                        <div class="inline-block px-2.5 py-0.5 rounded-full bg-sky-400/10 text-sky-400 text-[11px] font-bold uppercase mb-3">
+                            Pilar 03 &bull; Espacio Privilegiado
+                        </div>
+                        <h3 class="font-display font-black text-2xl text-white mb-3">
+                            Un Campus de +75.000 m² en San Juan 10, Muskiz
+                        </h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Estudiar en Somorrostro es disfrutar de un entorno natural único entre mar y montaña, a pocos minutos de la playa de La Arena. El campus cuenta con cafetería, zonas verdes de descanso, maker space, biblioteca técnica y estación de <strong class="text-white">Renfe Cercanías a 500m</strong>.
+                        </p>
+                        <div class="mt-6 pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-sky-400 font-semibold">
+                            <i class="fa-solid fa-train-subway"></i>
+                            <span>Conexión directa con Bilbao, Margen Izquierda y Zona Minera</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Daily Schedule representation inspired by actual life in Somorrostro -->
+                <div class="mt-14 p-6 glass-panel rounded-3xl border border-white/10">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                        <div class="p-4 rounded-xl bg-darkBg/60 border border-white/5">
+                            <div class="text-2xl text-brandBlue mb-2"><i class="fa-solid fa-mug-hot"></i></div>
+                            <span class="font-bold text-white text-sm block">08:00 - Briefing de Equipo</span>
+                            <span class="text-xs text-slate-400">Reunión diaria Scrum y objetivos del reto</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-darkBg/60 border border-white/5">
+                            <div class="text-2xl text-brandOrange mb-2"><i class="fa-solid fa-screwdriver"></i></div>
+                            <span class="font-bold text-white text-sm block">10:00 - Taller Práctico</span>
+                            <span class="text-xs text-slate-400">Manos en los racks, soldadura y código</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-darkBg/60 border border-white/5">
+                            <div class="text-2xl text-emerald-400 mb-2"><i class="fa-solid fa-comments"></i></div>
+                            <span class="font-bold text-white text-sm block">12:30 - Feedback & Mentoría</span>
+                            <span class="text-xs text-slate-400">Revisión con tutores de Somorrostro</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-darkBg/60 border border-white/5">
+                            <div class="text-2xl text-sky-400 mb-2"><i class="fa-solid fa-seedling"></i></div>
+                            <span class="font-bold text-white text-sm block">14:00 - Campus & Ocio</span>
+                            <span class="text-xs text-slate-400">Zonas verdes y vida social en Muskiz</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TEST INTERACTIVO DE ORIENTACIÓN: DESCUBRE TU ESPECIALIDAD TECH -->
+        <section id="test-vocacion" class="py-20 relative overflow-hidden bg-gradient-to-b from-darkBg via-[#0d1526] to-darkBg">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center mb-10">
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-brandBlue bg-brandBlue/10 px-3.5 py-1 rounded-full border border-brandBlue/20">
+                        Orientación Vocacional Somorrostro
+                    </span>
+                    <h2 class="font-display font-black text-3xl sm:text-4xl text-white mt-3">
+                        ¿Qué especialidad tecnológica encaja contigo?
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base mt-2">
+                        Responde a 3 preguntas rápidas y nuestro recomendador te indicará en qué taller de Somorrostro vas a desarrollar todo tu potencial.
+                    </p>
+                </div>
+
+                <!-- Quiz Container -->
+                <div class="glass-panel p-6 sm:p-10 rounded-3xl border border-brandBlue/30 shadow-2xl relative" id="quizContainer">
+                    
+                    <!-- Progress Bar -->
+                    <div class="w-full bg-slate-800 h-2 rounded-full mb-8 overflow-hidden">
+                        <div id="quizProgressBar" class="h-full bg-gradient-to-r from-brandBlue to-brandOrange w-1/3 transition-all duration-500"></div>
+                    </div>
+
+                    <!-- Step 1 -->
+                    <div id="quizStep1" class="quiz-step space-y-6">
+                        <div class="flex items-center justify-between text-xs text-slate-400 font-mono">
+                            <span>PREGUNTA 1 DE 3</span>
+                            <span class="text-brandBlue font-bold">Tus Intereses Técnicos</span>
+                        </div>
+                        <h3 class="font-display font-bold text-xl sm:text-2xl text-white">
+                            Cuando estás ante un ordenador o dispositivo, ¿qué te produce más curiosidad?
+                        </h3>
+                        
+                        <div class="grid grid-cols-1 gap-3.5 pt-2">
+                            <button onclick="selectAnswer('q1', 'montaje')" class="quiz-option text-left p-4 rounded-xl bg-darkElevated hover:bg-slate-800 border border-white/10 hover:border-brandOrange transition-all flex items-center justify-between group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-lg bg-brandOrange/20 text-brandOrange flex items-center justify-center font-bold">A</div>
+                                    <span class="text-sm font-semibold text-slate-200 group-hover:text-white">Abrirlo, montar los componentes, mejorar la refrigeración y diagnosticar por qué no arranca.</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-brandOrange"></i>
+                            </button>
+
+                            <button onclick="selectAnswer('q1', 'redes')" class="quiz-option text-left p-4 rounded-xl bg-darkElevated hover:bg-slate-800 border border-white/10 hover:border-brandBlue transition-all flex items-center justify-between group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-lg bg-brandBlue/20 text-brandBlue flex items-center justify-center font-bold">B</div>
+                                    <span class="text-sm font-semibold text-slate-200 group-hover:text-white">Cómo viajan los paquetes de red, conectar oficinas por VPN y proteger sistemas contra hackers.</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-brandBlue"></i>
+                            </button>
+
+                            <button onclick="selectAnswer('q1', 'desarrollo')" class="quiz-option text-left p-4 rounded-xl bg-darkElevated hover:bg-slate-800 border border-white/10 hover:border-emerald-400 transition-all flex items-center justify-between group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">C</div>
+                                    <span class="text-sm font-semibold text-slate-200 group-hover:text-white">Diseñar sitios web interactivos, programar aplicaciones y automatizar funciones con código.</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-emerald-400"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div id="quizStep2" class="quiz-step hidden space-y-6">
+                        <div class="flex items-center justify-between text-xs text-slate-400 font-mono">
+                            <span>PREGUNTA 2 DE 3</span>
+                            <span class="text-brandOrange font-bold">Tu Entorno Ideal</span>
+                        </div>
+                        <h3 class="font-display font-bold text-xl sm:text-2xl text-white">
+                            Si pudieras elegir tu día de trabajo soñado en una empresa de Bizkaia, ¿qué harías?
+                        </h3>
+                        
+                        <div class="grid grid-cols-1 gap-3.5 pt-2">
+                            <button onclick="selectAnswer('q2', 'montaje')" class="quiz-option text-left p-4 rounded-xl bg-darkElevated hover:bg-slate-800 border border-white/10 hover:border-brandOrange transition-all flex items-center justify-between group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-lg bg-brandOrange/20 text-brandOrange flex items-center justify-center font-bold">A</div>
+                                    <span class="text-sm font-semibold text-slate-200 group-hover:text-white">En un taller de laboratorio ensamblando ordenadores gaming y servidores de alta gama.</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-brandOrange"></i>
+                            </button>
+
+                            <button onclick="selectAnswer('q2', 'redes')" class="quiz-option text-left p-4 rounded-xl bg-darkElevated hover:bg-slate-800 border border-white/10 hover:border-brandBlue transition-all flex items-center justify-between group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-lg bg-brandBlue/20 text-brandBlue flex items-center justify-center font-bold">B</div>
+                                    <span class="text-sm font-semibold text-slate-200 group-hover:text-white">En un Centro de Proceso de Datos (CPD) o SOC gestionando routers Cisco y servidores cloud.</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-brandBlue"></i>
+                            </button>
+
+                            <button onclick="selectAnswer('q2', 'desarrollo')" class="quiz-option text-left p-4 rounded-xl bg-darkElevated hover:bg-slate-800 border border-white/10 hover:border-emerald-400 transition-all flex items-center justify-between group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">C</div>
+                                    <span class="text-sm font-semibold text-slate-200 group-hover:text-white">En un equipo de desarrollo ágil creando una app para miles de usuarios y resolviendo retos de código.</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-emerald-400"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div id="quizStep3" class="quiz-step hidden space-y-6">
+                        <div class="flex items-center justify-between text-xs text-slate-400 font-mono">
+                            <span>PREGUNTA 3 DE 3</span>
+                            <span class="text-emerald-400 font-bold">Tu Punto Fuerte</span>
+                        </div>
+                        <h3 class="font-display font-bold text-xl sm:text-2xl text-white">
+                            ¿Por qué razón suelen pedirte ayuda tus amigos o familiares?
+                        </h3>
+                        
+                        <div class="grid grid-cols-1 gap-3.5 pt-2">
+                            <button onclick="selectAnswer('q3', 'montaje')" class="quiz-option text-left p-4 rounded-xl bg-darkElevated hover:bg-slate-800 border border-white/10 hover:border-brandOrange transition-all flex items-center justify-between group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-lg bg-brandOrange/20 text-brandOrange flex items-center justify-center font-bold">A</div>
+                                    <span class="text-sm font-semibold text-slate-200 group-hover:text-white">"La torre hace ruido, no da señal de vídeo o necesito que me ayudes a elegir componentes para un PC".</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-brandOrange"></i>
+                            </button>
+
+                            <button onclick="selectAnswer('q3', 'redes')" class="quiz-option text-left p-4 rounded-xl bg-darkElevated hover:bg-slate-800 border border-white/10 hover:border-brandBlue transition-all flex items-center justify-between group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-lg bg-brandBlue/20 text-brandBlue flex items-center justify-center font-bold">B</div>
+                                    <span class="text-sm font-semibold text-slate-200 group-hover:text-white">"No llega internet a mi habitación, el router va lento o creo que me han hackeado una cuenta".</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-brandBlue"></i>
+                            </button>
+
+                            <button onclick="selectAnswer('q3', 'desarrollo')" class="quiz-option text-left p-4 rounded-xl bg-darkElevated hover:bg-slate-800 border border-white/10 hover:border-emerald-400 transition-all flex items-center justify-between group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">C</div>
+                                    <span class="text-sm font-semibold text-slate-200 group-hover:text-white">"Quiero montar una tienda online, programar una macro o crear un formulario web interactivo".</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-emerald-400"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Result Panel -->
+                    <div id="quizResult" class="hidden text-center py-6 space-y-6">
+                        <div class="w-20 h-20 mx-auto rounded-3xl bg-brandBlue/20 border border-brandBlue/40 flex items-center justify-center text-4xl" id="resultIcon">
+                            <i class="fa-solid fa-award text-brandBlue"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs uppercase font-bold tracking-widest text-brandOrange" id="resultBadge">Recomendación Oficial Somorrostro</span>
+                            <h3 class="font-display font-black text-2xl sm:text-3xl text-white mt-1" id="resultTitle">
+                                Tu Taller Ideal en Somorrostro
+                            </h3>
+                            <p class="text-slate-300 text-sm max-w-lg mx-auto mt-2" id="resultDesc">
+                                Calculando tu itinerario formativo...
+                            </p>
+                        </div>
+                        <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <a href="#contacto" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-brandBlue to-brandOrange text-white font-bold text-sm shadow-neon-orange flex items-center justify-center gap-2">
+                                <span>Solicitar plaza para este ciclo</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                            <button onclick="resetQuiz()" class="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-darkElevated hover:bg-slate-800 text-slate-300 border border-white/10 text-sm font-semibold flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-rotate-left"></i> Repetir test
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE CONTACTO, VISITAS Y UBICACIÓN: SAN JUAN 10, MUSKIZ -->
+        <section id="contacto" class="py-20 relative bg-darkElevated/40 border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    
+                    <!-- Left: Contact Details inspired by somorrostro.com -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brandOrange/15 border border-brandOrange/30 text-xs font-bold text-brandOrange uppercase tracking-wider">
+                            <i class="fa-solid fa-door-open"></i> Jornadas de Puertas Abiertas
+                        </div>
+
+                        <h2 class="font-display font-black text-3xl sm:text-4xl text-white">
+                            Ven a Conocer los Talleres en San Juan 10, Muskiz
+                        </h2>
+
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            La mejor forma de comprobar la diferencia de Somorrostro es venir a pisar nuestros talleres, ver los servidores en funcionamiento y charlar con el profesorado y el alumnado. Estamos esperándote.
+                        </p>
+
+                        <!-- Address and details card -->
+                        <div class="p-5 rounded-2xl bg-darkCard border border-white/10 space-y-4">
+                            
+                            <div class="flex items-start gap-3.5">
+                                <div class="w-10 h-10 rounded-xl bg-brandBlue/20 text-brandBlue flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-slate-400 font-medium">Dirección Física</div>
+                                    <div class="text-sm font-bold text-white">Barrio San Juan 10, 48550 Muskiz (Bizkaia)</div>
+                                    <div class="text-xs text-slate-400 mt-0.5">Centro de Formación Somorrostro (Edificios Lanberri y Suberri)</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3.5">
+                                <div class="w-10 h-10 rounded-xl bg-brandOrange/20 text-brandOrange flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-slate-400 font-medium">Teléfonos Oficiales</div>
+                                    <div class="text-sm font-bold text-white">94 670 60 45 <span class="text-xs text-slate-400 font-normal">(Centralita FP)</span></div>
+                                    <div class="text-xs text-slate-400 mt-0.5">94 404 94 11 (Formación para el Empleo / Lanbide)</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3.5">
+                                <div class="w-10 h-10 rounded-xl bg-sky-400/20 text-sky-400 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-slate-400 font-medium">Correos Electrónicos</div>
+                                    <div class="text-sm font-bold text-white">cfs@somorrostro.com / fpe@somorrostro.com</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3.5">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-train"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-slate-400 font-medium">Transporte y Accesos</div>
+                                    <div class="text-xs text-slate-300 mt-0.5">
+                                        <strong class="text-white">Renfe Cercanías C2:</strong> Estación Muskiz a 5 minutos.<br>
+                                        <strong class="text-white">Bizkaibus:</strong> Conexión con Bilbao, Barakaldo, Portugalete y Santurtzi.<br>
+                                        <strong class="text-white">Coche / Moto:</strong> Autovía A-8 Salida Muskiz (Parking gratuito de gran capacidad).
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Right: Interactive Form -->
+                    <div class="lg:col-span-7">
+                        <div class="glass-panel p-8 sm:p-10 rounded-3xl border border-white/10 shadow-2xl relative">
+                            <div class="mb-6">
+                                <h3 class="font-display font-bold text-2xl text-white">
+                                    Solicita Información o Reserva tu Visita
+                                </h3>
+                                <p class="text-xs text-slate-400 mt-1">
+                                    Déjanos tus datos y un tutor o tutora de orientación te llamará para resolver todas tus dudas sobre matrícula, becas y convalidaciones.
+                                </p>
+                            </div>
+
+                            <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="formNombre" class="block text-xs font-semibold text-slate-300 mb-1.5">Nombre y Apellidos *</label>
+                                        <input type="text" id="formNombre" required placeholder="Ej: Maite Etxebarria" class="w-full px-4 py-3 rounded-xl bg-darkElevated border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-brandBlue transition-colors text-sm">
+                                    </div>
+                                    <div>
+                                        <label for="formTelefono" class="block text-xs font-semibold text-slate-300 mb-1.5">Teléfono de contacto *</label>
+                                        <input type="tel" id="formTelefono" required placeholder="Ej: 600 000 000" class="w-full px-4 py-3 rounded-xl bg-darkElevated border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-brandBlue transition-colors text-sm">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="formEmail" class="block text-xs font-semibold text-slate-300 mb-1.5">Correo Electrónico *</label>
+                                        <input type="email" id="formEmail" required placeholder="tu@correo.com" class="w-full px-4 py-3 rounded-xl bg-darkElevated border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-brandBlue transition-colors text-sm">
+                                    </div>
+                                    <div>
+                                        <label for="formTaller" class="block text-xs font-semibold text-slate-300 mb-1.5">Ciclo de Informática de Interés</label>
+                                        <select id="formTaller" class="w-full px-4 py-3 rounded-xl bg-darkElevated border border-white/10 text-white focus:outline-none focus:border-brandBlue transition-colors text-sm">
+                                            <option value="smr">Grado Medio SMR (Montaje y Mantenimiento de Hardware)</option>
+                                            <option value="asir">Grado Superior ASIR (Redes, Servidores y Ciberseguridad)</option>
+                                            <option value="daw_dam">Grados Superiores DAW / DAM (Desarrollo Web & Multiplataforma)</option>
+                                            <option value="todos">Quiero visitar los tres talleres informáticos</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="formMensaje" class="block text-xs font-semibold text-slate-300 mb-1.5">Mensaje o consulta</label>
+                                    <textarea id="formMensaje" rows="3" placeholder="Pregúntanos sobre horarios, FP Dual, requisitos de acceso o si quieres venir con tu familia a conocer las instalaciones..." class="w-full px-4 py-3 rounded-xl bg-darkElevated border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-brandBlue transition-colors text-sm"></textarea>
+                                </div>
+
+                                <div class="flex items-start gap-2.5 pt-1">
+                                    <input type="checkbox" id="formPrivacidad" required class="mt-1 rounded bg-darkElevated border-white/20 text-brandBlue focus:ring-brandBlue">
+                                    <label for="formPrivacidad" class="text-xs text-slate-400">
+                                        Acepto la política de privacidad y el tratamiento de datos para recibir asesoramiento personalizado del Centro de Formación Somorrostro.
+                                    </label>
+                                </div>
+
+                                <button type="submit" id="submitBtn" class="w-full py-4 rounded-xl bg-gradient-to-r from-brandBlue to-brandOrange hover:from-brandBlue-hover hover:to-brandOrange-hover text-white font-display font-extrabold text-sm tracking-wider uppercase shadow-neon-orange transition-all duration-300 flex items-center justify-center gap-2">
+                                    <span>ENVIAR SOLICITUD DE INFORMACIÓN</span>
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                </button>
+                            </form>
+
+                            <div id="formSuccessMessage" class="hidden mt-4 p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-sm flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-xl shrink-0"></i>
+                                <div>
+                                    <strong class="font-bold block text-white">¡Mensaje recibido con éxito!</strong>
+                                    <span>El equipo de orientación del Centro de Formación Somorrostro se pondrá en contacto contigo a la mayor brevedad.</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER INSTITUCIONAL INSPIRADO EN SOMORROSTRO.COM -->
+    <footer class="bg-[#05080f] border-t border-white/10 text-slate-400 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                
+                <!-- Col 1: Somorrostro Institutional -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-9 h-9 rounded-lg bg-brandBlue flex items-center justify-center text-white font-bold text-sm">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <span class="font-display font-black text-lg text-white tracking-tight">SOMORROSTRO</span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed">
+                        Centro de Formación Somorrostro (Somorrostro Irakaskuntza Zentroa). Miembro de HETEL y EBI Elizbarrutiko Ikastetxeak.
+                    </p>
+                    <p class="text-slate-500 text-[11px]">
+                        San Juan 10, 48550 Muskiz, Bizkaia &bull; Tel: 94 670 60 45
+                    </p>
+                    <div class="pt-1">
+                        <span class="inline-block px-3 py-1 rounded bg-white/5 text-[10px] text-slate-300 border border-white/10 font-mono">
+                            «Tu futuro empieza aquí»
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Col 2: Ciclos de Informática -->
+                <div>
+                    <h4 class="font-display font-bold text-sm text-white uppercase tracking-wider mb-4">Ciclos de Informática</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#talleres" class="hover:text-brandOrange transition-colors">Grado Medio: SMR (Montaje y Redes)</a></li>
+                        <li><a href="#talleres" class="hover:text-brandBlue transition-colors">Grado Superior: ASIR (Redes y Ciberseguridad)</a></li>
+                        <li><a href="#talleres" class="hover:text-emerald-400 transition-colors">Grado Superior: DAW (Desarrollo Web)</a></li>
+                        <li><a href="#talleres" class="hover:text-emerald-400 transition-colors">Grado Superior: DAM (Multiplataforma)</a></li>
+                        <li><a href="#ethazi" class="hover:text-white transition-colors">Cursos Especialización IA & Ciberseguridad</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Servicios del Campus (inspirados en la web oficial) -->
+                <div>
+                    <h4 class="font-display font-bold text-sm text-white uppercase tracking-wider mb-4">Servicios Somorrostro</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="https://www.somorrostro.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-1">Portal Oficial somorrostro.com <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a></li>
+                        <li><a href="#vida-centro" class="hover:text-white transition-colors">Bolsa de Empleo Lanberri</a></li>
+                        <li><a href="#vida-centro" class="hover:text-white transition-colors">Movilidad Erasmus+ Internacional</a></li>
+                        <li><a href="#ethazi" class="hover:text-white transition-colors">Metodología ETHAZI (Tknika)</a></li>
+                        <li><a href="#contacto" class="hover:text-white transition-colors">Formación para el Empleo (Lanbide)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Redes Sociales y Sellos Oficiales -->
+                <div class="space-y-4">
+                    <h4 class="font-display font-bold text-sm text-white uppercase tracking-wider mb-2">Comunidad & Redes</h4>
+                    <p class="text-slate-400">Sigue el día a día y los retos de nuestros alumnos en:</p>
+                    <div class="flex items-center gap-3">
+                        <a href="https://www.linkedin.com/school/centro-de-formacion-somorrostro/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-darkElevated hover:bg-brandBlue text-slate-300 hover:text-white flex items-center justify-center transition-colors border border-white/10" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/cfsomorrostro/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-darkElevated hover:bg-brandOrange text-slate-300 hover:text-white flex items-center justify-center transition-colors border border-white/10" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://twitter.com/cfsomorrostro" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-darkElevated hover:bg-sky-500 text-slate-300 hover:text-white flex items-center justify-center transition-colors border border-white/10" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.youtube.com/user/somorrostro" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-darkElevated hover:bg-red-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors border border-white/10" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                    <div class="pt-2">
+                        <span class="inline-block px-3 py-1 rounded bg-white/5 text-[10px] text-slate-400 border border-white/10">
+                            Eusko Jaurlaritza &bull; FP Euskadi &bull; HETEL &bull; EBI
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Legal Bar -->
+            <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500 text-[11px]">
+                <p>&copy; <span id="currentYear"></span> Centro de Formación Somorrostro. San Juan 10, 48550 Muskiz (Bizkaia).</p>
+                <div class="flex items-center gap-4">
+                    <a href="https://www.somorrostro.com" class="hover:underline">Aviso Legal</a>
+                    <a href="https://www.somorrostro.com" class="hover:underline">Política de Privacidad</a>
+                    <a href="https://www.somorrostro.com" class="hover:underline">Cookies</a>
+                    <a href="https://www.somorrostro.com" class="hover:underline">Canal Ético</a>
+                </div>
+            </div>
+
         </div>
     </footer>
 
-    <!-- APP SCRIPT LOGIC -->
+    <!-- INTERACTIVE WORKSHOP MODAL -->
+    <div id="workshopModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/85 backdrop-blur-md transition-opacity">
+        <div class="glass-panel w-full max-w-2xl rounded-3xl border border-white/15 p-6 sm:p-8 max-h-[90vh] overflow-y-auto relative animate-scaleUp">
+            
+            <button onclick="closeWorkshopModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-darkElevated border border-white/10 text-slate-300 hover:text-white hover:bg-rose-500/20 flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center gap-3.5 mb-4">
+                <div id="modalIconBox" class="w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold"></div>
+                <div>
+                    <span id="modalBadge" class="text-xs font-mono uppercase font-bold tracking-wider"></span>
+                    <h3 id="modalTitle" class="font-display font-black text-2xl text-white"></h3>
+                </div>
+            </div>
+
+            <p id="modalDesc" class="text-slate-300 text-sm leading-relaxed mb-6"></p>
+
+            <div class="space-y-4 mb-6">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Proyectos y Retos Reales ETHAZI</h4>
+                <div id="modalProjects" class="space-y-2"></div>
+            </div>
+
+            <div class="space-y-3 mb-6">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Salidas Profesionales Destacadas</h4>
+                <div id="modalCareers" class="flex flex-wrap gap-2"></div>
+            </div>
+
+            <div class="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <span class="text-xs text-slate-400"><i class="fa-solid fa-location-dot text-brandOrange mr-1"></i> Talleres en San Juan 10, Muskiz</span>
+                <a href="#contacto" onclick="closeWorkshopModal()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-brandBlue hover:bg-brandBlue-hover text-white text-xs font-bold uppercase tracking-wider transition-colors text-center">
+                    Solicitar Visita al Taller
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Fallback Dataset in case API or Network has issues
-        const FALLBACK_DATA = {
-            items: [
-                {
-                    id: 1,
-                    name: "Goku",
-                    ki: "60.000.000",
-                    maxKi: "90 Septillion",
-                    race: "Saiyan",
-                    gender: "Male",
-                    description: "El protagonista de la serie, conocido por su gran poder y personalidad amigable. Enviado a la Tierra para sobrevivír, se convirtió en el gran defensor del Universo 7.",
-                    image: "https://dragonball-api.com/characters/goku_normal.webp",
-                    affiliation: "Z Fighter"
-                },
-                {
-                    id: 2,
-                    name: "Vegeta",
-                    ki: "54.000.000",
-                    maxKi: "19.84 Septillion",
-                    race: "Saiyan",
-                    gender: "Male",
-                    description: "Príncipe de los Saiyans, inicialmente un villano temible, pero con el tiempo se une a los Guerreros Z convirtiéndose en un héroe clave.",
-                    image: "https://dragonball-api.com/characters/vegeta_normal.webp",
-                    affiliation: "Z Fighter"
-                },
-                {
-                    id: 3,
-                    name: "Piccolo",
-                    ki: "2.000.000",
-                    maxKi: "500.000.000",
-                    race: "Namekian",
-                    gender: "Male",
-                    description: "Namekiano sabio y poderoso. Archienemigo de Goku en el pasado que evolucionó hasta convertirse en uno de los protectores de la Tierra.",
-                    image: "https://dragonball-api.com/characters/picolo_normal.webp",
-                    affiliation: "Z Fighter"
-                },
-                {
-                    id: 4,
-                    name: "Bulma",
-                    ki: "0",
-                    maxKi: "0",
-                    race: "Human",
-                    gender: "Female",
-                    description: "Científica brillante de la Corporación CÁPSULA y pieza clave en todas las aventuras reuniendo las Esferas del Dragón.",
-                    image: "https://dragonball-api.com/characters/bulma.webp",
-                    affiliation: "Z Fighter"
-                },
-                {
-                    id: 5,
-                    name: "Freezer",
-                    ki: "530.000",
-                    maxKi: "52.71 Septillion",
-                    race: "Frieza Race",
-                    gender: "Male",
-                    description: "Tirano espacial y conquistador de mundos, uno de los antagonistas más icónicos del Universo Dragon Ball.",
-                    image: "https://dragonball-api.com/characters/Freezer.webp",
-                    affiliation: "Army of Frieza"
-                },
-                {
-                    id: 9,
-                    name: "Cell",
-                    ki: "250.000.000",
-                    maxKi: "5 Billion",
-                    race: "Android",
-                    gender: "Male",
-                    description: "Bioandroide perfecto creado por la computadora del Dr. Gero reuniendo las células de los luchadores más fuertes.",
-                    image: "https://dragonball-api.com/characters/celula.webp",
-                    affiliation: "Freelancer"
-                }
-            ],
-            meta: {
-                totalItems: 58,
-                itemCount: 6,
-                itemsPerPage: 10,
-                totalPages: 6,
-                currentPage: 1
+        // Dynamic Current Year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            if (isHidden) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars-staggered');
+            } else {
+                menuIcon.classList.remove('fa-bars-staggered');
+                menuIcon.classList.add('fa-xmark');
             }
-        };
+        });
 
-        // State Management
-        let appState = {
-            currentPage: 1,
-            totalPages: 6,
-            totalItems: 58,
-            characters: [],
-            filteredCharacters: [],
-            searchTerm: '',
-            selectedRace: '',
-            selectedAffiliation: '',
-            isLoading: false
-        };
-
-        // DOM Elements
-        const characterGrid = document.getElementById('character-grid');
-        const loadingSpinner = document.getElementById('loading-spinner');
-        const emptyState = document.getElementById('empty-state');
-        const searchInput = document.getElementById('search-input');
-        const raceFilter = document.getElementById('race-filter');
-        const affiliationFilter = document.getElementById('affiliation-filter');
-        const resetBtn = document.getElementById('reset-btn');
-        const statusBanner = document.getElementById('status-banner');
-        const statusIcon = document.getElementById('status-icon');
-        const statusMessage = document.getElementById('status-message');
-        
-        // Badges and Pagination DOM
-        const totalCountBadge = document.getElementById('total-count-badge');
-        const totalPagesBadge = document.getElementById('total-pages-badge');
-        const currentPageNum = document.getElementById('current-page-num');
-        const totalPagesNum = document.getElementById('total-pages-num');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
-        const pageNumbersWrapper = document.getElementById('page-numbers-wrapper');
-
-        // Modal DOM
-        const detailModal = document.getElementById('detail-modal');
-        const closeModalBtn = document.getElementById('close-modal-btn');
-        const modalImg = document.getElementById('modal-img');
-        const modalTitle = document.getElementById('modal-title');
-        const modalRace = document.getElementById('modal-race');
-        const modalAffiliation = document.getElementById('modal-affiliation');
-        const modalKi = document.getElementById('modal-ki');
-        const modalMaxKi = document.getElementById('modal-max-ki');
-        const modalDescription = document.getElementById('modal-description');
-        const modalGender = document.getElementById('modal-gender');
-        const modalId = document.getElementById('modal-id');
-
-        // API Fetch Function
-        async function fetchCharacters(page = 1) {
-            setLoading(true);
-            hideBanner();
-
-            try {
-                const response = await fetch(`https://dragonball-api.com/api/characters?page=${page}&limit=10`);
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-
-                const data = await response.json();
-                
-                if (data && data.items) {
-                    appState.characters = data.items;
-                    appState.currentPage = data.meta.currentPage || page;
-                    appState.totalPages = data.meta.totalPages || 6;
-                    appState.totalItems = data.meta.totalItems || 58;
-                } else {
-                    throw new Error("Estructura de API inválida");
-                }
-            } catch (error) {
-                console.warn("Error consultando la API de Dragon Ball, utilizando datos locales de respaldo:", error);
-                showBanner("Conexión remota no disponible. Mostrando datos locales de reserva.", "warning");
-                
-                // Use Fallback Data
-                appState.characters = FALLBACK_DATA.items;
-                appState.currentPage = 1;
-                appState.totalPages = 1;
-                appState.totalItems = FALLBACK_DATA.items.length;
-            } finally {
-                setLoading(false);
-                applyFilters();
-                updatePaginationUI();
-            }
-        }
-
-        // Filter Function
-        function applyFilters() {
-            const search = appState.searchTerm.toLowerCase().trim();
-            const race = appState.selectedRace;
-            const affiliation = appState.selectedAffiliation;
-
-            appState.filteredCharacters = appState.characters.filter(char => {
-                const matchesSearch = char.name.toLowerCase().includes(search) || 
-                                     (char.description && char.description.toLowerCase().includes(search));
-                
-                const matchesRace = !race || char.race === race;
-                const matchesAffiliation = !affiliation || char.affiliation === affiliation;
-
-                return matchesSearch && matchesRace && matchesAffiliation;
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars-staggered');
             });
+        });
 
-            renderGrid();
-        }
-
-        // Render Character Grid
-        function renderGrid() {
-            characterGrid.innerHTML = '';
-
-            if (appState.filteredCharacters.length === 0) {
-                characterGrid.classList.add('hidden');
-                emptyState.classList.remove('hidden');
-                return;
+        // Header Style on Scroll
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('mainHeader');
+            if (window.scrollY > 40) {
+                header.classList.add('shadow-lg', 'bg-darkBg/95');
+            } else {
+                header.classList.remove('shadow-lg', 'bg-darkBg/95');
             }
+        });
 
-            emptyState.classList.add('hidden');
-            characterGrid.classList.remove('hidden');
+        // ANIMATED COUNTERS LOGIC
+        let countersAnimated = false;
 
-            appState.filteredCharacters.forEach(char => {
-                const card = document.createElement('div');
-                card.className = "bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden aura-glow cursor-pointer flex flex-col justify-between group";
-                card.onclick = () => openModal(char);
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter-number');
+            const speed = 1500;
 
-                // Race badge color logic
-                let raceBadgeClass = "bg-db-orange/20 text-db-orange border-db-orange/30";
-                if (char.race === 'Saiyan') raceBadgeClass = "bg-amber-500/20 text-amber-400 border-amber-500/30";
-                if (char.race === 'Namekian') raceBadgeClass = "bg-emerald-500/20 text-emerald-400 border-emerald-500/30";
-                if (char.race === 'Frieza Race') raceBadgeClass = "bg-purple-500/20 text-purple-400 border-purple-500/30";
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const startTime = performance.now();
 
-                card.innerHTML = `
-                    <div class="relative bg-gradient-to-b from-slate-950 to-slate-900 p-6 flex justify-center items-center h-64 overflow-hidden">
-                        <div class="absolute inset-0 bg-radial from-db-orange/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <img src="${char.image}" alt="${char.name}" 
-                            onerror="this.src='https://placehold.co/400x500/151d30/ff6600?text=${encodeURIComponent(char.name)}'"
-                            class="max-h-52 object-contain filter drop-shadow-[0_8px_12px_rgba(0,0,0,0.5)] transform group-hover:scale-110 transition duration-300">
-                    </div>
+                function updateCounter(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / speed, 1);
+                    const ease = 1 - Math.pow(1 - progress, 3);
+                    const currentVal = Math.floor(ease * target);
 
-                    <div class="p-5 flex flex-col justify-between flex-grow bg-slate-900 border-t border-slate-800/80">
-                        <div>
-                            <div class="flex items-center justify-between gap-2 mb-2">
-                                <span class="px-2.5 py-0.5 rounded-full text-xs font-bold border ${raceBadgeClass}">
-                                    ${char.race || 'Desconocido'}
-                                </span>
-                                <span class="text-xs text-slate-400 font-medium truncate max-w-[120px]">
-                                    ${char.affiliation || 'N/A'}
-                                </span>
-                            </div>
+                    counter.innerText = currentVal.toLocaleString('es-ES');
 
-                            <h3 class="font-heading text-xl font-bold text-slate-100 group-hover:text-db-yellow transition-colors mb-3">
-                                ${char.name}
-                            </h3>
-                        </div>
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = target.toLocaleString('es-ES');
+                    }
+                }
 
-                        <!-- Ki Stats Mini Display -->
-                        <div class="mt-2 pt-3 border-t border-slate-800/80 grid grid-cols-2 gap-2 text-xs">
-                            <div>
-                                <span class="block text-slate-500 font-semibold uppercase text-[10px]">Ki Base</span>
-                                <span class="font-bold text-db-yellow">${char.ki || '0'}</span>
-                            </div>
-                            <div class="text-right">
-                                <span class="block text-slate-500 font-semibold uppercase text-[10px]">Ki Máximo</span>
-                                <span class="font-bold text-db-orange">${char.maxKi || '0'}</span>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                characterGrid.appendChild(card);
+                requestAnimationFrame(updateCounter);
             });
         }
 
-        // Render Detail Modal
-        function openModal(character) {
-            modalImg.src = character.image;
-            modalImg.onerror = function() {
-                this.src = `https://placehold.co/400x500/151d30/ff6600?text=${encodeURIComponent(character.name)}`;
-            };
-            modalTitle.textContent = character.name;
-            modalRace.textContent = character.race || 'Desconocido';
-            modalAffiliation.textContent = character.affiliation || 'Sin afiliación';
-            modalKi.textContent = character.ki || 'Desconocido';
-            modalMaxKi.textContent = character.maxKi || 'Desconocido';
-            modalDescription.textContent = character.description || 'Sin descripción disponible para este guerrero.';
-            modalGender.textContent = character.gender || 'Desconocido';
-            modalId.textContent = character.id || '--';
+        function retriggerCounters() {
+            animateCounters();
+        }
 
-            detailModal.classList.remove('hidden');
+        // IntersectionObserver for the stats
+        const statsSection = document.getElementById('cifras');
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !countersAnimated) {
+                        countersAnimated = true;
+                        animateCounters();
+                    }
+                });
+            }, { threshold: 0.25 });
+
+            observer.observe(statsSection);
+        } else {
+            animateCounters();
+        }
+
+        // WORKSHOP MODALS DATA (With authentic Somorrostro cycles: SMR, ASIR, DAW/DAM)
+        const workshopData = {
+            montaje: {
+                title: "Taller de Montaje y Mantenimiento de Hardware (SMR)",
+                badge: "GRADO MEDIO · SISTEMAS MICROINFORMÁTICOS Y REDES",
+                iconClass: "fa-solid fa-screwdriver-wrench",
+                colorClass: "bg-brandOrange/20 text-brandOrange border border-brandOrange/30",
+                desc: "En este taller dominarás la arquitectura física de computadores, estaciones de trabajo y servidores. Equipado con bancos antiestáticos profesionales (ESD), osciloscopios, analizadores de firmware y estaciones de soldadura de precisión en el edificio Lanberri.",
+                projects: [
+                    "Montaje y banco de pruebas de workstations refrigeradas por líquido para diseño e Inteligencia Artificial.",
+                    "Reparación de fallos electrónicos en circuitos de alimentación y reflasheo de BIOS corruptas.",
+                    "Despliegue de imágenes maestras en red y configuración de almacenamiento RAID en servidores."
+                ],
+                careers: ["Técnico de Mantenimiento Microinformático", "Montador de Sistemas y Servidores", "Especialista en Soporte Técnico", "Técnico de Reparación Electrónica IT"]
+            },
+            redes: {
+                title: "Laboratorio de Redes y Ciberseguridad (ASIR)",
+                badge: "GRADO SUPERIOR · ADMINISTRACIÓN DE SISTEMAS EN RED",
+                iconClass: "fa-solid fa-network-wired",
+                colorClass: "bg-brandBlue/20 text-brandBlue border border-brandBlue/30",
+                desc: "El laboratorio cuenta con racks de 42U equipados con switches gestionados Cisco Catalyst, routers de enrutamiento dinámico, servidores Proxmox y patch panels para conmutación de cobre y fibra óptica, simulando centros de datos reales.",
+                projects: [
+                    "Diseño e implantación de una red de campus corporativa con VLANs y políticas 802.1X.",
+                    "Configuración de cortafuegos pfSense de alta disponibilidad con túneles VPN y filtrado perimetral.",
+                    "Monitorización de tráfico con Wireshark, análisis de vulnerabilidades y bastionado de sistemas Linux/Windows Server."
+                ],
+                careers: ["Administrador de Redes y Comunicaciones", "Especialista en Ciberseguridad Jr.", "Técnico de Centro de Procesamiento de Datos (CPD)", "Administrador de Sistemas Cloud"]
+            },
+            desarrollo: {
+                title: "Tech Hub de Desarrollo Web y Multiplataforma (DAW / DAM)",
+                badge: "GRADO SUPERIOR · DESARROLLO WEB Y SOFTWARE",
+                iconClass: "fa-solid fa-code",
+                colorClass: "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30",
+                desc: "Espacio tipo startup con configuración multimonitor y paneles Scrum donde se programan aplicaciones full-stack completas, conectando APIs REST seguras y bases de datos relacionales y NoSQL.",
+                projects: [
+                    "Desarrollo de una plataforma web completa para gestión educativa con React, Node.js y autenticación JWT.",
+                    "Diseño de interfaz responsiva y accesible siguiendo estándares modernos de diseño y CSS utilitario.",
+                    "Integración continua (CI/CD) en GitHub y contenedorización de servicios con Docker."
+                ],
+                careers: ["Desarrollador Web Frontend / Backend", "Programador Full-stack", "Desarrollador de Aplicaciones Móviles", "Gestor de Bases de Datos"]
+            }
+        };
+
+        function openWorkshopModal(key) {
+            const data = workshopData[key];
+            if (!data) return;
+
+            document.getElementById('modalTitle').textContent = data.title;
+            document.getElementById('modalBadge').textContent = data.badge;
+            document.getElementById('modalDesc').textContent = data.desc;
+
+            const iconBox = document.getElementById('modalIconBox');
+            iconBox.className = `w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold ${data.colorClass}`;
+            iconBox.innerHTML = `<i class="${data.iconClass}"></i>`;
+
+            const projectsContainer = document.getElementById('modalProjects');
+            projectsContainer.innerHTML = data.projects.map(proj => `
+                <div class="p-3 rounded-xl bg-darkElevated/80 border border-white/5 flex items-start gap-2.5 text-xs text-slate-300">
+                    <i class="fa-solid fa-chevron-right text-brandOrange mt-0.5 text-[10px]"></i>
+                    <span>${proj}</span>
+                </div>
+            `).join('');
+
+            const careersContainer = document.getElementById('modalCareers');
+            careersContainer.innerHTML = data.careers.map(car => `
+                <span class="px-2.5 py-1 rounded-lg bg-darkElevated border border-white/10 text-xs font-semibold text-slate-300">
+                    ${car}
+                </span>
+            `).join('');
+
+            const modal = document.getElementById('workshopModal');
+            modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
 
-        function closeModal() {
-            detailModal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
+        function closeWorkshopModal() {
+            const modal = document.getElementById('workshopModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
         }
 
-        // Update UI Pagination Controls
-        function updatePaginationUI() {
-            totalCountBadge.textContent = appState.totalItems;
-            totalPagesBadge.textContent = appState.totalPages;
-            currentPageNum.textContent = appState.currentPage;
-            totalPagesNum.textContent = appState.totalPages;
-
-            prevBtn.disabled = appState.currentPage <= 1;
-            nextBtn.disabled = appState.currentPage >= appState.totalPages;
-
-            // Generate Page Numbers Buttons
-            pageNumbersWrapper.innerHTML = '';
-            for (let i = 1; i <= appState.totalPages; i++) {
-                const pageBtn = document.createElement('button');
-                const isActive = i === appState.currentPage;
-                pageBtn.className = `w-8 h-8 rounded-lg text-xs font-bold transition ${
-                    isActive 
-                    ? 'bg-db-orange text-white shadow-md shadow-db-orange/30' 
-                    : 'bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-white'
-                }`;
-                pageBtn.textContent = i;
-                pageBtn.onclick = () => fetchCharacters(i);
-                pageNumbersWrapper.appendChild(pageBtn);
-            }
-        }
-
-        // UI State Handlers
-        function setLoading(loading) {
-            appState.isLoading = loading;
-            if (loading) {
-                loadingSpinner.classList.remove('hidden');
-                characterGrid.classList.add('hidden');
-                emptyState.classList.add('hidden');
-            } else {
-                loadingSpinner.classList.add('hidden');
-            }
-        }
-
-        function showBanner(msg, type = "info") {
-            statusBanner.classList.remove('hidden', 'bg-amber-950/60', 'border-amber-600', 'text-amber-300', 'bg-red-950/60', 'border-red-600', 'text-red-300');
-            
-            if (type === "warning") {
-                statusBanner.classList.add('bg-amber-950/60', 'border-amber-600', 'text-amber-300');
-                statusIcon.className = 'fa-solid fa-triangle-exclamation';
-            } else {
-                statusBanner.classList.add('bg-blue-950/60', 'border-blue-600', 'text-blue-300');
-                statusIcon.className = 'fa-solid fa-info-circle';
-            }
-
-            statusMessage.textContent = msg;
-        }
-
-        function hideBanner() {
-            statusBanner.classList.add('hidden');
-        }
-
-        // Event Listeners
-        searchInput.addEventListener('input', (e) => {
-            appState.searchTerm = e.target.value;
-            applyFilters();
-        });
-
-        raceFilter.addEventListener('change', (e) => {
-            appState.selectedRace = e.target.value;
-            applyFilters();
-        });
-
-        affiliationFilter.addEventListener('change', (e) => {
-            appState.selectedAffiliation = e.target.value;
-            applyFilters();
-        });
-
-        resetBtn.addEventListener('click', () => {
-            searchInput.value = '';
-            raceFilter.value = '';
-            affiliationFilter.value = '';
-            appState.searchTerm = '';
-            appState.selectedRace = '';
-            appState.selectedAffiliation = '';
-            applyFilters();
-        });
-
-        prevBtn.addEventListener('click', () => {
-            if (appState.currentPage > 1) {
-                fetchCharacters(appState.currentPage - 1);
-            }
-        });
-
-        nextBtn.addEventListener('click', () => {
-            if (appState.currentPage < appState.totalPages) {
-                fetchCharacters(appState.currentPage + 1);
-            }
-        });
-
-        closeModalBtn.addEventListener('click', closeModal);
-        detailModal.addEventListener('click', (e) => {
-            if (e.target === detailModal) closeModal();
+        document.getElementById('workshopModal').addEventListener('click', (e) => {
+            if (e.target.id === 'workshopModal') closeWorkshopModal();
         });
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !detailModal.classList.contains('hidden')) {
-                closeModal();
-            }
+            if (e.key === 'Escape') closeWorkshopModal();
         });
 
-        // Application Initialization
-        window.onload = function () {
-            fetchCharacters(1);
+        // INTERACTIVE QUIZ LOGIC
+        const quizAnswers = { q1: null, q2: null, q3: null };
+
+        function selectAnswer(question, value) {
+            quizAnswers[question] = value;
+
+            const step1 = document.getElementById('quizStep1');
+            const step2 = document.getElementById('quizStep2');
+            const step3 = document.getElementById('quizStep3');
+            const bar = document.getElementById('quizProgressBar');
+
+            if (question === 'q1') {
+                step1.classList.add('hidden');
+                step2.classList.remove('hidden');
+                bar.style.width = '66%';
+            } else if (question === 'q2') {
+                step2.classList.add('hidden');
+                step3.classList.remove('hidden');
+                bar.style.width = '100%';
+            } else if (question === 'q3') {
+                step3.classList.add('hidden');
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            const result = document.getElementById('quizResult');
+            result.classList.remove('hidden');
+
+            const counts = { montaje: 0, redes: 0, desarrollo: 0 };
+            counts[quizAnswers.q1] = (counts[quizAnswers.q1] || 0) + 1;
+            counts[quizAnswers.q2] = (counts[quizAnswers.q2] || 0) + 1;
+            counts[quizAnswers.q3] = (counts[quizAnswers.q3] || 0) + 1;
+
+            let winner = 'montaje';
+            if (counts.redes > counts[winner]) winner = 'redes';
+            if (counts.desarrollo > counts[winner]) winner = 'desarrollo';
+
+            const title = document.getElementById('resultTitle');
+            const desc = document.getElementById('resultDesc');
+            const icon = document.getElementById('resultIcon');
+            const badge = document.getElementById('resultBadge');
+
+            if (winner === 'montaje') {
+                badge.textContent = "Tu Ciclo Ideal: Grado Medio SMR";
+                title.textContent = "¡Taller de Montaje y Mantenimiento de Hardware!";
+                desc.textContent = "Tienes perfil de constructor tecnológico. Te apasiona comprender cómo encajan los componentes, la velocidad de los microprocesadores y reparar equipos reales en bancos antiestáticos.";
+                icon.className = "w-20 h-20 mx-auto rounded-3xl bg-brandOrange/20 border border-brandOrange/40 flex items-center justify-center text-4xl text-brandOrange";
+                icon.innerHTML = '<i class="fa-solid fa-screwdriver-wrench"></i>';
+            } else if (winner === 'redes') {
+                badge.textContent = "Tu Ciclo Ideal: Grado Superior ASIR";
+                title.textContent = "¡Laboratorio de Redes, Servidores y Ciberseguridad!";
+                desc.textContent = "Te fascina cómo se comunican los servidores, los protocolos de internet y proteger los datos corporativos ante ciberataques. Nuestros racks de 42U y routers Cisco te esperan en San Juan 10, Muskiz.";
+                icon.className = "w-20 h-20 mx-auto rounded-3xl bg-brandBlue/20 border border-brandBlue/40 flex items-center justify-center text-4xl text-brandBlue";
+                icon.innerHTML = '<i class="fa-solid fa-network-wired"></i>';
+            } else {
+                badge.textContent = "Tu Ciclo Ideal: Grados Superiores DAW / DAM";
+                title.textContent = "¡Tech Hub de Desarrollo Web y Aplicaciones!";
+                desc.textContent = "Tienes mente de creador de software. Te encanta programar lógica funcional, diseñar interfaces atractivas y ver cómo tus líneas de código se convierten en herramientas digitales utilizadas por personas.";
+                icon.className = "w-20 h-20 mx-auto rounded-3xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-4xl text-emerald-400";
+                icon.innerHTML = '<i class="fa-solid fa-code"></i>';
+            }
+        }
+
+        function resetQuiz() {
+            quizAnswers.q1 = null;
+            quizAnswers.q2 = null;
+            quizAnswers.q3 = null;
+
+            document.getElementById('quizStep1').classList.remove('hidden');
+            document.getElementById('quizStep2').classList.add('hidden');
+            document.getElementById('quizStep3').classList.add('hidden');
+            document.getElementById('quizResult').classList.add('hidden');
+            document.getElementById('quizProgressBar').style.width = '33%';
+        }
+
+        // LANGUAGE TOGGLE (ES / EU - Euskera auténtico)
+        let isEuskera = false;
+        const translations = {
+            es: {
+                nav_inicio: '<i class="fa-solid fa-house text-xs text-brandBlue"></i> Inicio',
+                nav_ethazi: 'Metodología Ethazi',
+                nav_talleres: 'Talleres Informática <span class="px-1.5 py-0.5 bg-brandBlue/20 text-brandBlue text-[10px] font-bold rounded-full border border-brandBlue/30">SMR · ASIR · DAM/W</span>',
+                nav_campus: 'Campus & Vida Diaria',
+                nav_cifras: 'Cifras de Éxito',
+                nav_test: '<i class="fa-solid fa-wand-magic-sparkles text-brandOrange mr-1"></i>Test Tech',
+                nav_contacto: 'Contacto',
+                cta_unete: '¡Únete a la Cantera!'
+            },
+            eu: {
+                nav_inicio: '<i class="fa-solid fa-house text-xs text-brandBlue"></i> Hasiera',
+                nav_ethazi: 'Ethazi Metodologia',
+                nav_talleres: 'Informatika Tailerrak <span class="px-1.5 py-0.5 bg-brandBlue/20 text-brandBlue text-[10px] font-bold rounded-full border border-brandBlue/30">SMR · ASIR · DAM/W</span>',
+                nav_campus: 'Campusa eta Egunerokoa',
+                nav_cifras: 'Emaitzak',
+                nav_test: '<i class="fa-solid fa-wand-magic-sparkles text-brandOrange mr-1"></i>Orientazio Testa',
+                nav_contacto: 'Kontaktua',
+                cta_unete: 'Etorri Harrobira!'
+            }
         };
+
+        function toggleLanguage() {
+            isEuskera = !isEuskera;
+            const lang = isEuskera ? 'eu' : 'es';
+            document.getElementById('langLabel').textContent = isEuskera ? 'ES / EU' : 'EU / ES';
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+        }
+
+        // FORM SUBMIT
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            const originalContent = submitBtn.innerHTML;
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin mr-2"></i> Procesando solicitud...`;
+
+            setTimeout(() => {
+                document.getElementById('contactForm').reset();
+                document.getElementById('formSuccessMessage').classList.remove('hidden');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<i class="fa-solid fa-check mr-2"></i> Solicitud Enviada Correctamente`;
+
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalContent;
+                }, 4000);
+            }, 1200);
+        }
     </script>
 </body>
 </html>
