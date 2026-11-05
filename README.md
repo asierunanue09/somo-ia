@@ -5,6 +5,15 @@
 
 ---
 
+## 🎨 Paleta de Color: Verde Esmeralda Tech & Azul Eléctrico (FP Euskadi)
+
+* **Fondo Oscuro Pizarra (`#07111e`)**: Proporciona máxima profundidad visual, confort de lectura y estética high-tech.
+* **Verde Esmeralda Tech (`#00e599` / `#10b981`)**: El color de la innovación sostenible, los retos y la identidad tecnológica de Euskadi.
+* **Azul Eléctrico & Cian (`#0066ff` / `#38bdf8`)**: Acento institucional de conectividad, redes y solvencia académica.
+* **Glassmorphism translúcido**: Paneles con desenfoque de fondo y bordes bioluminiscentes.
+
+---
+
 ## 🚀 Sobre el Proyecto: Ruta A (La Cantera Tecnológica)
 
 Este proyecto plasma una visión innovadora y motivadora del Centro de Formación Somorrostro como el gran vivero y cantera de talento tecnológico de Bizkaia y Euskadi. Inspirado en su identidad oficial ([somorrostro.com](https://www.somorrostro.com)), el diseño rompe con los esquemas educativos tradicionales para centrarse en:
@@ -31,7 +40,6 @@ Este proyecto plasma una visión innovadora y motivadora del Centro de Formació
 
 ## 🌟 Características y Funcionalidades Interactivas
 
-* **Estilo Visual Moderno**: Paleta con fondo oscuro profundo (`#0b101b`), azul institucional Somorrostro (`#0084ff`), naranja vibrante de innovación (`#ff7700`) y efectos glassmorphism.
 * **Contador Interactivo en JavaScript**: Animación de métricas de impacto (*96% inserción laboral, +450 retos superados, 1.500 h prácticas en taller y +280 empresas con convenio Dual*) sincronizado con `IntersectionObserver`.
 * **Fichas Técnicas Modales**: Ventanas emergentes con detalles técnicos, retos típicos y salidas laborales para cada especialidad.
 * **Test de Orientación Vocacional (1 min)**: Cuestionario dinámico de 3 preguntas que diagnostica qué taller tecnológico encaja con el perfil del usuario.
